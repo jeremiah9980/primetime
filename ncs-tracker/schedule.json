@@ -1,0 +1,53 @@
+{
+  "event": {
+    "name": "NCS 10U STATE",
+    "dates": "Jun 13–14, 2026",
+    "location": "Taylor, TX",
+    "venue": "Taylor Athletic Complex",
+    "director": "Maggie Stoecklein",
+    "gateFees": "Weekend $20 · Daily $15 · 12U Free (cash only)",
+    "division": "10U OPEN",
+    "url": "https://playncs.com/FASTPITCH/Events/Schedule/12472/2026-central-texas-ncs-10u-summer-state-triple-points-open-6gg?division=10U%20OPEN"
+  },
+  "updated": null,
+  "teams": [
+    {"id":"70200","name":"Texas Blaze CTX 10U","guest":false},
+    {"id":"71028","name":"Texas Blaze Alcozer 10U","guest":true},
+    {"id":"72338","name":"Power House Andrade 10U","guest":false},
+    {"id":"71631","name":"CTX Mayhem -Aviles","guest":true},
+    {"id":"72242","name":"Clubhouse Stix 10u Malik","guest":false},
+    {"id":"71355","name":"Primetime 10u","guest":false},
+    {"id":"75786","name":"10U BAMBINAS","guest":false},
+    {"id":"86649","name":"Sting Softball 10u","guest":false},
+    {"id":"73637","name":"10U Texas Blaze Waco","guest":false},
+    {"id":"73551","name":"Bombers CTX 10U-Singletary","guest":false},
+    {"id":"81426","name":"RobCo Rowdies","guest":false},
+    {"id":"75431","name":"Corona Angels 10U Coleman","guest":false}
+  ],
+  "games": [
+    {"id":1,"gameNo":1,"day":"Sat","dateISO":"2026-06-13T09:00:00","time":"9:00 AM","field":"TAC 1","homeId":"70200","awayId":"71028","home":"Texas Blaze CTX 10U","away":"Texas Blaze Alcozer 10U","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":2,"gameNo":2,"day":"Sat","dateISO":"2026-06-13T09:00:00","time":"9:00 AM","field":"TAC 2","homeId":"72338","awayId":"71631","home":"Power House Andrade 10U","away":"CTX Mayhem -Aviles","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":3,"gameNo":3,"day":"Sat","dateISO":"2026-06-13T10:20:00","time":"10:20 AM","field":"TAC 1","homeId":"70200","awayId":"72242","home":"Texas Blaze CTX 10U","away":"Clubhouse Stix 10u Malik","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":4,"gameNo":4,"day":"Sat","dateISO":"2026-06-13T10:20:00","time":"10:20 AM","field":"TAC 2","homeId":"71355","awayId":"71631","home":"Primetime 10u","away":"CTX Mayhem -Aviles","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":5,"gameNo":5,"day":"Sat","dateISO":"2026-06-13T10:20:00","time":"10:20 AM","field":"TAC 3","homeId":"75786","awayId":"86649","home":"10U BAMBINAS","away":"Sting Softball 10u","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":6,"gameNo":6,"day":"Sat","dateISO":"2026-06-13T10:20:00","time":"10:20 AM","field":"TAC 5","homeId":"73637","awayId":"73551","home":"10U Texas Blaze Waco","away":"Bombers CTX 10U-Singletary","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":7,"gameNo":7,"day":"Sat","dateISO":"2026-06-13T11:40:00","time":"11:40 AM","field":"TAC 1","homeId":"72242","awayId":"75431","home":"Clubhouse Stix 10u Malik","away":"Corona Angels 10U Coleman","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":8,"gameNo":8,"day":"Sat","dateISO":"2026-06-13T11:40:00","time":"11:40 AM","field":"TAC 2","homeId":"81426","awayId":"71355","home":"RobCo Rowdies","away":"Primetime 10u","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":9,"gameNo":9,"day":"Sat","dateISO":"2026-06-13T11:40:00","time":"11:40 AM","field":"TAC 3","homeId":"71028","awayId":"86649","home":"Texas Blaze Alcozer 10U","away":"Sting Softball 10u","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":10,"gameNo":10,"day":"Sat","dateISO":"2026-06-13T11:40:00","time":"11:40 AM","field":"TAC 5","homeId":"73637","awayId":"72338","home":"10U Texas Blaze Waco","away":"Power House Andrade 10U","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":11,"gameNo":11,"day":"Sat","dateISO":"2026-06-13T13:00:00","time":"1:00 PM","field":"TAC 1","homeId":"70200","awayId":"75786","home":"Texas Blaze CTX 10U","away":"10U BAMBINAS","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":12,"gameNo":12,"day":"Sat","dateISO":"2026-06-13T13:00:00","time":"1:00 PM","field":"TAC 2","homeId":"73551","awayId":"71631","home":"Bombers CTX 10U-Singletary","away":"CTX Mayhem -Aviles","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":13,"gameNo":13,"day":"Sat","dateISO":"2026-06-13T13:00:00","time":"1:00 PM","field":"TAC 3","homeId":"71028","awayId":"75431","home":"Texas Blaze Alcozer 10U","away":"Corona Angels 10U Coleman","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":14,"gameNo":14,"day":"Sat","dateISO":"2026-06-13T13:00:00","time":"1:00 PM","field":"TAC 5","homeId":"81426","awayId":"72338","home":"RobCo Rowdies","away":"Power House Andrade 10U","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":15,"gameNo":15,"day":"Sat","dateISO":"2026-06-13T14:20:00","time":"2:20 PM","field":"TAC 1","homeId":"72242","awayId":"75786","home":"Clubhouse Stix 10u Malik","away":"10U BAMBINAS","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":16,"gameNo":16,"day":"Sat","dateISO":"2026-06-13T14:20:00","time":"2:20 PM","field":"TAC 2","homeId":"73551","awayId":"71355","home":"Bombers CTX 10U-Singletary","away":"Primetime 10u","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":17,"gameNo":17,"day":"Sat","dateISO":"2026-06-13T14:20:00","time":"2:20 PM","field":"TAC 3","homeId":"70200","awayId":"86649","home":"Texas Blaze CTX 10U","away":"Sting Softball 10u","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":18,"gameNo":18,"day":"Sat","dateISO":"2026-06-13T14:20:00","time":"2:20 PM","field":"TAC 5","homeId":"73637","awayId":"71631","home":"10U Texas Blaze Waco","away":"CTX Mayhem -Aviles","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":19,"gameNo":19,"day":"Sat","dateISO":"2026-06-13T15:40:00","time":"3:40 PM","field":"TAC 1","homeId":"72242","awayId":"71028","home":"Clubhouse Stix 10u Malik","away":"Texas Blaze Alcozer 10U","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":20,"gameNo":20,"day":"Sat","dateISO":"2026-06-13T15:40:00","time":"3:40 PM","field":"TAC 2","homeId":"71355","awayId":"72338","home":"Primetime 10u","away":"Power House Andrade 10U","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":21,"gameNo":21,"day":"Sat","dateISO":"2026-06-13T15:40:00","time":"3:40 PM","field":"TAC 3","homeId":"86649","awayId":"75431","home":"Sting Softball 10u","away":"Corona Angels 10U Coleman","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":22,"gameNo":22,"day":"Sat","dateISO":"2026-06-13T15:40:00","time":"3:40 PM","field":"TAC 5","homeId":"81426","awayId":"73637","home":"RobCo Rowdies","away":"10U Texas Blaze Waco","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":23,"gameNo":23,"day":"Sat","dateISO":"2026-06-13T17:00:00","time":"5:00 PM","field":"TAC 3","homeId":"75786","awayId":"75431","home":"10U BAMBINAS","away":"Corona Angels 10U Coleman","homeScore":null,"awayScore":null,"status":"scheduled"},
+    {"id":24,"gameNo":24,"day":"Sat","dateISO":"2026-06-13T17:00:00","time":"5:00 PM","field":"TAC 5","homeId":"81426","awayId":"73551","home":"RobCo Rowdies","away":"Bombers CTX 10U-Singletary","homeScore":null,"awayScore":null,"status":"scheduled"}
+  ]
+}
