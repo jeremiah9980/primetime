@@ -1,0 +1,106 @@
+
+/* ===== PRIMETIME FASTPITCH SKIN — black + gold over the shared design system ===== */
+body.primetime-page {
+  --blue:     #C8920A;
+  --blue2:    #A07800;
+  --blue-l:   #FFF8E6;
+  --blue-m:   #FFE08A;
+  --yellow:   #D4A017;
+  --yellow2:  #B88A00;
+  --yellow-l: #FFF8E6;
+  --yellow-m: #FFE08A;
+  --stripe: repeating-linear-gradient(90deg, rgba(212,160,23,.18) 0px, rgba(212,160,23,.18) 6px, transparent 6px, transparent 28px);
+  background: #080808;
+}
+
+.primetime-page nav { background: #0a0a0a; border-bottom-color: var(--yellow); }
+.primetime-page .nav-brand { color: #fff; }
+.primetime-page .nav-brand span { color: #9a8050; }
+.primetime-page .nav-brand img { border-color: var(--yellow); }
+.primetime-page .nav-links a { color: rgba(255,255,255,.62); }
+.primetime-page .nav-links a:hover,
+.primetime-page .nav-links a.active { color: var(--yellow); background: rgba(212,160,23,.15); }
+.primetime-page .nav-links a[href*="fundraising"] { color: #0a0a0a; background: var(--yellow); border: 1px solid var(--yellow2); }
+.primetime-page .nav-links a[href*="fundraising"]:hover { background: #fff; color: var(--blue2); }
+
+.primetime-page .hero {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(212,160,23,.20), transparent 30%),
+    radial-gradient(circle at 16% 70%, rgba(212,160,23,.10), transparent 34%),
+    linear-gradient(135deg, #060608 0%, #111114 55%, #07070A 100%);
+  border-bottom: 3px solid var(--yellow);
+}
+.primetime-page .hero h1 { color: #fff; text-shadow: 0 0 40px rgba(212,160,23,.55); }
+.primetime-page .hero-kicker { color: var(--yellow); }
+.primetime-page .hero-sub { color: rgba(255,255,255,.82); }
+.primetime-page .hero-logo {
+  width: 130px; height: 130px; object-fit: contain;
+  margin: 0 auto 14px; display: block;
+  filter: drop-shadow(0 8px 26px rgba(212,160,23,.35));
+}
+.primetime-page .hero-rule { background: var(--yellow); }
+
+.primetime-page .page { background: #F9F7F2; border-radius: 20px 20px 0 0; margin-top: 0; padding-top: 8px; }
+.primetime-page .gold-strip { background: var(--yellow); border-bottom-color: var(--yellow2); }
+.primetime-page .gold-strip p { color: #080808; }
+
+.primetime-page .section-label { color: var(--blue); }
+.primetime-page .card h3 { color: var(--blue); }
+.primetime-page .card-gold { border-top-color: var(--yellow); }
+.primetime-page .card-blue { border-top-color: var(--blue); }
+
+.primetime-page .callout {
+  border-left-color: var(--yellow);
+  background: var(--yellow-l);
+}
+
+.primetime-page .doc-item:hover {
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(212,160,23,.18);
+}
+.primetime-page .doc-icon {
+  background: var(--yellow-m);
+  border-color: var(--yellow);
+  color: var(--blue2);
+}
+
+.primetime-page .btn-primary {
+  background: var(--yellow);
+  color: #080808;
+}
+.primetime-page .btn-primary:hover { background: var(--yellow2); }
+.primetime-page .btn-outline { border-color: var(--blue); color: var(--blue); }
+.primetime-page .btn-outline:hover { background: var(--blue); color: #fff; }
+
+.primetime-page .vote-table th {
+  background: #1a1a1a;
+  color: var(--yellow);
+  border-color: #333;
+}
+.primetime-page .vote-table tr:hover td { background: var(--blue-l); }
+
+.primetime-page .badge-gold {
+  background: var(--yellow-m);
+  color: var(--blue2);
+  border: 1px solid var(--yellow);
+}
+.primetime-page .badge-blue {
+  background: var(--blue-l);
+  color: var(--blue2);
+}
+.primetime-page .avatar.av-gold {
+  background: var(--yellow-m);
+  color: var(--blue2);
+  border-color: var(--yellow);
+}
+.primetime-page .avatar.av-blue {
+  background: var(--blue-l);
+  color: var(--blue2);
+  border-color: var(--blue-m);
+}
+
+.primetime-page footer { background: #0a0a0a; border-top: 4px solid var(--yellow); }
+.primetime-page .footer-brand { color: var(--yellow); text-shadow: 2px 2px 0 rgba(0,0,0,.35); }
+.primetime-page footer p { color: rgba(255,255,255,.5); }
+.primetime-page .footer-links a { color: rgba(255,255,255,.45); }
+.primetime-page .footer-links a:hover { color: var(--yellow); }
