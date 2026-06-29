@@ -99,6 +99,231 @@ body.primetime-page {
   border-color: var(--blue-m);
 }
 
+/* ===== PLAYER CARD ROSTER LOOK ===== */
+.primetime-page #roster {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(212,160,23,.12), transparent 30%),
+    radial-gradient(circle at 90% 12%, rgba(54,197,240,.08), transparent 26%),
+    #070509;
+  border-radius: 22px;
+  margin: 30px 0;
+  padding: 38px 26px;
+  border: 1px solid rgba(212,160,23,.22);
+  box-shadow: 0 28px 70px -42px #000;
+}
+.primetime-page #roster .section-label,
+.primetime-page #roster h2,
+.primetime-page #roster p { color: #f7f0df; }
+.primetime-page #roster .section-label { color: var(--yellow); }
+.primetime-page #roster .section-rule { background: var(--yellow); }
+.primetime-page .roster-summary {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin: 18px 0 24px;
+}
+.primetime-page .roster-summary-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 9px 14px;
+  border-radius:999px;
+  background:#f1e7ff;
+  color:#3c2355;
+  font-family:var(--display);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.28);
+}
+.primetime-page .roster-summary-pill i { color: var(--yellow2); }
+.primetime-page .status-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#24df6b;
+  box-shadow:0 0 0 4px rgba(36,223,107,.14);
+}
+.primetime-page .player-card-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:26px;
+}
+.primetime-page .player-card {
+  position:relative;
+  overflow:hidden;
+  border-radius:9px;
+  background:linear-gradient(180deg,#160823 0%,#210a35 45%,#13071f 100%);
+  border:1px solid rgba(212,160,23,.25);
+  box-shadow:0 22px 48px -34px #000;
+}
+.primetime-page .player-card:before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:88px;
+  height:5px;
+  background:linear-gradient(90deg,#7c36ff,var(--yellow));
+  z-index:2;
+}
+.primetime-page .player-photo {
+  position:relative;
+  height:176px;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(212,160,23,.15),transparent 34%),
+    radial-gradient(circle at 68% 28%,rgba(124,54,255,.33),transparent 28%),
+    linear-gradient(145deg,#0d0614,#251037 60%,#0a050d);
+  display:grid;
+  place-items:center;
+}
+.primetime-page .player-photo:after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.62));
+}
+.primetime-page .player-photo i {
+  position:relative;
+  z-index:1;
+  font-size:58px;
+  color:#e5d3ff;
+  opacity:.78;
+}
+.primetime-page .player-watermark {
+  position:absolute;
+  right:14px;
+  bottom:4px;
+  color:rgba(255,255,255,.06);
+  font-family:Georgia,serif;
+  font-size:78px;
+  font-weight:900;
+  line-height:1;
+}
+.primetime-page .jersey-badge {
+  position:absolute;
+  left:18px;
+  bottom:16px;
+  z-index:3;
+  display:grid;
+  place-items:center;
+  min-width:56px;
+  height:56px;
+  padding:0 10px;
+  border-radius:999px;
+  background:linear-gradient(145deg,#5b2391,#2a0e42);
+  color:#fff;
+  border:3px solid var(--yellow);
+  font-family:var(--display);
+  font-size:18px;
+  font-weight:950;
+  box-shadow:0 10px 24px -18px #000;
+}
+.primetime-page .player-body {
+  padding:22px 22px 24px;
+}
+.primetime-page .player-name {
+  margin:0 0 12px;
+  color:#fff !important;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:27px;
+  line-height:1.02;
+  letter-spacing:-.75px;
+}
+.primetime-page .player-status {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+  padding:8px 13px;
+  border-radius:999px;
+  border:1px solid rgba(212,160,23,.38);
+  background:rgba(212,160,23,.11);
+  color:var(--yellow);
+  font-family:var(--display);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.35px;
+  text-transform:uppercase;
+}
+.primetime-page .player-divider {
+  height:1px;
+  background:rgba(255,255,255,.16);
+  margin:0 0 17px;
+}
+.primetime-page .player-stat-label {
+  margin-bottom:10px;
+  color:#8560bb;
+  font-family:var(--display);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+}
+.primetime-page .player-stat-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+}
+.primetime-page .player-stat {
+  border:1px solid rgba(212,160,23,.20);
+  border-radius:7px;
+  background:rgba(5,4,7,.45);
+  padding:9px 6px 8px;
+  text-align:center;
+}
+.primetime-page .player-stat strong {
+  display:block;
+  color:#8f3dff;
+  font-family:var(--display);
+  font-size:18px;
+  font-weight:950;
+  line-height:1;
+  text-shadow:0 0 18px rgba(143,61,255,.35);
+}
+.primetime-page .player-stat span {
+  display:block;
+  margin-top:6px;
+  color:#fff;
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:.9px;
+  text-transform:uppercase;
+  opacity:.82;
+}
+.primetime-page .player-note {
+  margin:13px 0 0 !important;
+  color:#e7dff0 !important;
+  font-size:12px;
+  line-height:1.45;
+}
+.primetime-page .player-profile-link {
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:16px;
+  color:var(--yellow);
+  text-decoration:none;
+  font-family:var(--display);
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:1.05px;
+  text-transform:uppercase;
+}
+.primetime-page .player-profile-link:hover { color:#fff; }
+
+@media(max-width:960px){
+  .primetime-page .player-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:620px){
+  .primetime-page #roster{padding:30px 16px;}
+  .primetime-page .player-card-grid{grid-template-columns:1fr;}
+  .primetime-page .player-photo{height:164px;}
+}
+
 .primetime-page footer { background: #0a0a0a; border-top: 4px solid var(--yellow); }
 .primetime-page .footer-brand { color: var(--yellow); text-shadow: 2px 2px 0 rgba(0,0,0,.35); }
 .primetime-page footer p { color: rgba(255,255,255,.5); }
