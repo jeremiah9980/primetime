@@ -1,30 +1,38 @@
+const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+const isHomePage = currentFile === 'index.html' || currentFile === '';
+const anchorPrefix = isHomePage ? '' : 'index.html';
+
+const NAV_LINKS = [
+  ['HOME', 'home'],
+  ['Team Info', 'team-info'],
+  ['Roster', 'roster'],
+  ['Schedule', 'schedule'],
+  ['NCS Tourn Tracker', 'ncs-tourn-tracker'],
+  ['Fundraising', 'fundraising'],
+];
+
 const NAV_HTML = `
 <nav>
   <div class="nav-inner">
-    <a class="nav-brand" href="index.html">
+    <a class="nav-brand" href="${anchorPrefix}#home">
       <span style="font-size:22px;line-height:1;color:#D4A017;">★</span>
       Primetime <span>FASTPITCH</span>
     </a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="board.html">Board</a>
-      <a href="coaching.html">Coaching</a>
-      <a href="roster.html">Roster</a>
-      <a href="bylaws.html">Bylaws</a>
-      <a href="finances.html">Finances</a>
-      <a href="policies.html">Policies</a>
-      <a href="docs.html">Documents</a>
-      <a href="fundraising.html">Support Us</a>
-      <a href="contact.html">Contact</a>
+      ${NAV_LINKS.map(([label, id]) => `<a href="${anchorPrefix}#${id}" data-anchor-id="${id}">${label}</a>`).join('')}
     </div>
   </div>
 </nav>`;
 
+function setActiveAnchor() {
+  const activeId = (window.location.hash || '#home').replace('#', '');
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.anchorId === activeId);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
-  const path = window.location.pathname;
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    if (path.endsWith(a.getAttribute('href').split('/').pop())) a.classList.add('active');
-  });
+  setActiveAnchor();
+  window.addEventListener('hashchange', setActiveAnchor);
 });
