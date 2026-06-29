@@ -2,33 +2,34 @@ const currentPath = window.location.pathname;
 const currentFile = currentPath.split('/').pop() || 'index.html';
 const isHomePage = currentFile === 'index.html' || currentFile === '';
 const isPlayerPage = currentPath.includes('/players/');
-const anchorPrefix = isPlayerPage ? '../index.html' : (isHomePage ? '' : 'index.html');
-const assetPrefix = isPlayerPage ? '../' : '';
+const isRosterPage = currentPath.includes('/roster/');
+const sitePrefix = isPlayerPage || isRosterPage ? '../' : '';
+const assetPrefix = sitePrefix;
 
 const NAV_LINKS = [
-  ['HOME', 'home'],
-  ['Team Info', 'team-info'],
-  ['Roster', 'roster'],
-  ['Schedule', 'schedule'],
-  ['NCS Tourn Tracker', 'ncs-tourn-tracker'],
-  ['Fundraising', 'fundraising'],
+  ['HOME', `${sitePrefix}index.html#home`, 'home'],
+  ['Team Info', `${sitePrefix}index.html#team-info`, 'team-info'],
+  ['Roster', `${sitePrefix}roster/`, 'roster'],
+  ['Schedule', `${sitePrefix}index.html#schedule`, 'schedule'],
+  ['NCS Tourn Tracker', `${sitePrefix}index.html#ncs-tourn-tracker`, 'ncs-tourn-tracker'],
+  ['Fundraising', `${sitePrefix}index.html#fundraising`, 'fundraising'],
 ];
 
 const NAV_HTML = `
 <nav>
   <div class="nav-inner">
-    <a class="nav-brand" href="${anchorPrefix}#home">
+    <a class="nav-brand" href="${sitePrefix}index.html#home">
       <span style="font-size:22px;line-height:1;color:#D4A017;">★</span>
       Primetime <span>FASTPITCH</span>
     </a>
     <div class="nav-links">
-      ${NAV_LINKS.map(([label, id]) => `<a href="${anchorPrefix}#${id}" data-anchor-id="${id}">${label}</a>`).join('')}
+      ${NAV_LINKS.map(([label, href, id]) => `<a href="${href}" data-anchor-id="${id}">${label}</a>`).join('')}
     </div>
   </div>
 </nav>`;
 
 function setActiveAnchor() {
-  const activeId = isPlayerPage ? 'roster' : (window.location.hash || '#home').replace('#', '');
+  const activeId = isRosterPage || isPlayerPage ? 'roster' : (window.location.hash || '#home').replace('#', '');
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.classList.toggle('active', a.dataset.anchorId === activeId);
   });
