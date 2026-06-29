@@ -169,6 +169,7 @@ async function renderPlayerProfile() {
 
   shell.append(main, buildFooter());
   root.appendChild(shell);
+  window.dispatchEvent(new CustomEvent('primetime-player-profile-rendered', { detail: { slug: player.slug } }));
 }
 
 document.addEventListener('DOMContentLoaded', renderPlayerProfile);
