@@ -70,13 +70,17 @@ window.PRIMETIME_PLAYER_IMAGES = window.PRIMETIME_PLAYER_IMAGES || {
     return `${window.PRIMETIME_PLAYER_IMAGE_BASE}${fileName}`;
   }
 
+  function profileHrefFor(slug) {
+    return slug === 'romina-alexandra-trevino' ? 'romina-trevino.html' : `${slug}.html`;
+  }
+
   function attachImage(img, photo) {
     img.addEventListener('load', () => photo.classList.add('has-player-image'));
     img.addEventListener('error', () => img.remove());
   }
 
   function setRosterPhoto(slug, fileName) {
-    const link = document.querySelector(`a.player-profile-link[href$="${slug}.html"], a.player-profile-link[href$="romina-trevino.html"]`);
+    const link = document.querySelector(`a.player-profile-link[href$="${profileHrefFor(slug)}"]`);
     if (!link) return;
     const card = link.closest('.player-card');
     const photo = card && card.querySelector('.player-photo');
