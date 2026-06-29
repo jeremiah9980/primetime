@@ -1,180 +1,653 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Primetime Fastpitch — Texas Select Softball</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/team-primetime.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Primetime 10U · NCS State Command</title>
+<meta name="theme-color" content="#0c0f16" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&family=Saira+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0c0f16; --bg2:#11151f; --bg3:#19202e; --raised:#1f2738;
+    --line:#262f42; --line2:#33405a;
+    --txt:#eef2f9; --muted:#8c96ac; --faint:#5d6krooe;
+    --faint:#5d677e;
+    --team:#ffb524; --team2:#ffd070;       /* Primetime gold/amber */
+    --live:#ff3b3b; --win:#2fd27f; --loss:#ff6b6b; --cyan:#36c5f0;
+    --shadow:0 18px 40px -18px rgba(0,0,0,.8);
+    --r:16px;
+  }
+  [data-theme="light"]{
+    --bg:#eef1f6; --bg2:#ffffff; --bg3:#f4f6fb; --raised:#ffffff;
+    --line:#dde3ee; --line2:#c8d2e4;
+    --txt:#10141c; --muted:#5a6party; --muted:#5a6478; --faint:#8b93a6;
+    --shadow:0 16px 34px -20px rgba(20,30,60,.35);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1100px 480px at 78% -8%, rgba(255,181,36,.10), transparent 60%),
+      radial-gradient(900px 520px at 5% 0%, rgba(54,197,240,.08), transparent 55%),
+      var(--bg);
+    color:var(--txt);
+    font-family:"Barlow",system-ui,sans-serif;
+    line-height:1.45;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  body:before{ /* subtle grain/turf texture */
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:3px 3px;
+  }
+  .wrap{position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 14px 120px}
+
+  /* ---------- Header ---------- */
+  header.top{
+    position:sticky; top:0; z-index:30;
+    margin:0 -14px 14px; padding:12px 14px 12px;
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .top-row{display:flex; align-items:center; gap:12px}
+  .crest{
+    width:46px; height:46px; flex:none; border-radius:13px;
+    display:grid; place-items:center; font-family:"Anton"; font-size:22px; color:#1a1205;
+    background:linear-gradient(150deg,var(--team2),var(--team)); 
+    box-shadow:0 0 0 1px rgba(255,255,255,.12) inset, 0 8px 20px -8px var(--team);
+    letter-spacing:.5px;
+  }
+  .ttl{flex:1; min-width:0}
+  .ttl h1{
+    margin:0; font-family:"Saira Condensed"; font-weight:800; letter-spacing:.3px;
+    font-size:19px; line-height:1; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .ttl .sub{font-size:12px; color:var(--muted); margin-top:3px; display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+  .dot{width:3px;height:3px;border-radius:50%;background:var(--faint);display:inline-block}
+  .clock{font-family:"Saira Condensed"; font-weight:700; font-variant-numeric:tabular-nums; color:var(--team2)}
+  .iconbtn{
+    flex:none; width:40px;height:40px;border-radius:11px; border:1px solid var(--line);
+    background:var(--bg3); color:var(--txt); font-size:18px; cursor:pointer; display:grid;place-items:center;
+    transition:.15s; line-height:1;
+  }
+  .iconbtn:active{transform:scale(.92)}
+  .iconbtn.spin svg{animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .meta-strip{display:flex; gap:8px; margin-top:11px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px}
+  .meta-strip::-webkit-scrollbar{display:none}
+  .chip{
+    flex:none; font-family:"Saira Condensed"; font-weight:600; font-size:12.5px; letter-spacing:.4px;
+    text-transform:uppercase; padding:6px 11px; border-radius:999px; border:1px solid var(--line);
+    background:var(--bg3); color:var(--muted); white-space:nowrap; text-decoration:none;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .chip b{color:var(--txt); font-weight:700}
+  .chip.map{color:var(--cyan); border-color:color-mix(in srgb,var(--cyan) 35%,var(--line))}
+
+  /* ---------- Team selector ---------- */
+  .teampick{
+    display:flex; align-items:center; gap:10px; margin:14px 0;
+    background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:10px 12px;
+  }
+  .teampick label{font-family:"Saira Condensed"; font-weight:700; font-size:13px; text-transform:uppercase; color:var(--muted); letter-spacing:.5px}
+  .teampick select{
+    flex:1; appearance:none; -webkit-appearance:none; border:0; cursor:pointer;
+    background:var(--bg3); color:var(--txt); font-family:"Barlow"; font-weight:600; font-size:15px;
+    padding:9px 34px 9px 12px; border-radius:10px; border:1px solid var(--line);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238c96ac' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 12px center;
+  }
+
+  /* ---------- Next game hero ---------- */
+  .hero{
+    position:relative; overflow:hidden; border-radius:20px; padding:18px;
+    background:linear-gradient(160deg,var(--raised),var(--bg2));
+    border:1px solid var(--line2); box-shadow:var(--shadow); margin-bottom:16px;
+  }
+  .hero:before{content:""; position:absolute; right:-60px; top:-60px; width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,var(--team),transparent 70%); opacity:.16}
+  .hero .eyebrow{font-family:"Saira Condensed"; font-weight:800; text-transform:uppercase; letter-spacing:1.2px;
+    font-size:12.5px; color:var(--team2); display:flex; align-items:center; gap:8px}
+  .hero .matchup{display:flex; align-items:center; justify-content:space-between; gap:10px; margin:14px 0 6px}
+  .side{flex:1; min-width:0; text-align:center}
+  .side .nm{font-family:"Saira Condensed"; font-weight:700; font-size:17px; line-height:1.05; text-transform:uppercase}
+  .side .sc{font-family:"Anton"; font-size:46px; line-height:.9; margin-top:6px; color:var(--txt)}
+  .side.us .nm{color:var(--team2)}
+  .vs{font-family:"Anton"; font-size:15px; color:var(--faint); flex:none; padding:0 4px}
+  .hero .when{display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:8px}
+  .countdown{font-family:"Anton"; font-size:24px; color:var(--team); font-variant-numeric:tabular-nums; letter-spacing:.5px}
+  .when .det{font-family:"Saira Condensed"; font-weight:600; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); font-size:13.5px}
+  .live-pill{font-family:"Saira Condensed"; font-weight:800; font-size:12px; letter-spacing:1px; text-transform:uppercase;
+    color:#fff; background:var(--live); padding:3px 9px; border-radius:999px; animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+  .hero.done .when .countdown{color:var(--muted); font-size:17px}
+
+  /* ---------- Tabs ---------- */
+  .tabs{display:flex; gap:6px; margin-bottom:14px; background:var(--bg2); padding:5px; border-radius:13px; border:1px solid var(--line)}
+  .tab{
+    flex:1; text-align:center; cursor:pointer; border:0; background:transparent; color:var(--muted);
+    font-family:"Saira Condensed"; font-weight:700; font-size:13.5px; letter-spacing:.4px; text-transform:uppercase;
+    padding:9px 4px; border-radius:9px; transition:.15s;
+  }
+  .tab.active{background:var(--team); color:#1a1205; box-shadow:0 6px 14px -6px var(--team)}
+
+  /* ---------- Game cards ---------- */
+  .slot-h{font-family:"Saira Condensed"; font-weight:800; text-transform:uppercase; letter-spacing:.8px;
+    font-size:13px; color:var(--muted); margin:18px 2px 8px; display:flex; align-items:center; gap:9px}
+  .slot-h:after{content:""; flex:1; height:1px; background:var(--line)}
+
+  .game{
+    display:grid; grid-template-columns:54px 1fr auto; gap:12px; align-items:center;
+    background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:12px 13px; margin-bottom:9px;
+    transition:.15s;
+  }
+  .game.mine{border-color:var(--team); background:linear-gradient(100deg, color-mix(in srgb,var(--team) 9%,var(--bg2)), var(--bg2) 60%)}
+  .game.live{border-color:var(--live)}
+  .g-when{text-align:center}
+  .g-when .t{font-family:"Saira Condensed"; font-weight:800; font-size:14px; line-height:1}
+  .g-when .g{font-size:10.5px; color:var(--faint); font-weight:600; margin-top:3px; letter-spacing:.3px}
+  .g-when .f{font-family:"Saira Condensed"; font-weight:700; font-size:11px; color:var(--cyan); margin-top:4px; text-transform:uppercase}
+  .g-teams{min-width:0}
+  .g-team{display:flex; align-items:center; gap:8px; padding:2px 0}
+  .g-team .nm{font-weight:600; font-size:14.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1; min-width:0}
+  .g-team.us .nm{color:var(--team2); font-weight:700}
+  .g-team .sc{font-family:"Anton"; font-size:20px; line-height:1; min-width:24px; text-align:right; color:var(--muted)}
+  .g-team.w .sc{color:var(--win)}
+  .g-team.w .nm:after{content:"W"; font-family:"Saira Condensed"; font-size:10px; font-weight:800; color:#1a1205; background:var(--win); padding:1px 5px; border-radius:5px; margin-left:7px}
+  .g-divider{height:1px; background:var(--line); margin:5px 0}
+  .g-status{text-align:right}
+  .badge{font-family:"Saira Condensed"; font-weight:800; font-size:10.5px; letter-spacing:.6px; text-transform:uppercase;
+    padding:4px 8px; border-radius:7px; white-space:nowrap}
+  .badge.sched{background:var(--bg3); color:var(--muted); border:1px solid var(--line)}
+  .badge.final{background:color-mix(in srgb,var(--win) 18%,var(--bg3)); color:var(--win); border:1px solid color-mix(in srgb,var(--win) 40%,transparent)}
+  .badge.live{background:var(--live); color:#fff; animation:pulse 1.4s infinite}
+
+  /* result banner for "my team" */
+  .mine-result{font-family:"Saira Condensed"; font-weight:800; font-size:11px; letter-spacing:.6px; text-transform:uppercase; margin-top:2px}
+  .mine-result.W{color:var(--win)} .mine-result.L{color:var(--loss)} .mine-result.T{color:var(--muted)}
+
+  /* ---------- Record bar ---------- */
+  .recordbar{display:flex; gap:10px; margin-bottom:14px}
+  .stat{flex:1; background:var(--bg2); border:1px solid var(--line); border-radius:13px; padding:11px 8px; text-align:center}
+  .stat .n{font-family:"Anton"; font-size:28px; line-height:1; color:var(--team2)}
+  .stat .l{font-family:"Saira Condensed"; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); margin-top:5px}
+  .stat.w .n{color:var(--win)} .stat.l-stat .n{color:var(--loss)}
+
+  /* ---------- Standings ---------- */
+  table.stand{width:100%; border-collapse:collapse; background:var(--bg2); border:1px solid var(--line); border-radius:13px; overflow:hidden}
+  table.stand th{font-family:"Saira Condensed"; font-weight:700; text-transform:uppercase; font-size:11px; letter-spacing:.5px;
+    color:var(--muted); text-align:center; padding:9px 4px; border-bottom:1px solid var(--line); background:var(--bg3)}
+  table.stand th:first-child{text-align:left; padding-left:12px}
+  table.stand td{padding:9px 4px; text-align:center; font-size:13.5px; font-weight:600; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums}
+  table.stand td:first-child{text-align:left; padding-left:12px; font-weight:600}
+  table.stand tr:last-child td{border-bottom:0}
+  table.stand tr.us td{background:color-mix(in srgb,var(--team) 11%,transparent)}
+  table.stand tr.us td:first-child{color:var(--team2); font-weight:700}
+  .rk{font-family:"Anton"; color:var(--faint); font-size:13px; margin-right:8px}
+
+  /* ---------- Empty / bracket ---------- */
+  .empty{text-align:center; padding:38px 20px; color:var(--muted)}
+  .empty .ic{font-size:42px; margin-bottom:10px; opacity:.6}
+  .empty h3{font-family:"Saira Condensed"; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--txt); margin:0 0 6px; font-size:18px}
+  .empty p{margin:0 auto; max-width:380px; font-size:14px}
+  .btn{display:inline-flex; align-items:center; gap:8px; margin-top:16px; text-decoration:none;
+    font-family:"Saira Condensed"; font-weight:800; text-transform:uppercase; letter-spacing:.5px; font-size:13px;
+    background:var(--team); color:#1a1205; padding:11px 18px; border-radius:11px; box-shadow:0 8px 18px -8px var(--team)}
+
+  .note{font-size:11.5px; color:var(--faint); text-align:center; margin-top:18px; line-height:1.5}
+  .note a{color:var(--muted)}
+
+  /* edit mode */
+  .editrow{display:flex; align-items:center; gap:8px; justify-content:flex-end; margin-top:7px}
+  .editrow input{width:46px; text-align:center; font-family:"Anton"; font-size:18px; border-radius:8px;
+    border:1px solid var(--line2); background:var(--bg3); color:var(--txt); padding:4px}
+  .editrow .sv{font-family:"Saira Condensed"; font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:.5px;
+    background:var(--win); color:#04140b; border:0; padding:7px 12px; border-radius:8px; cursor:pointer}
+  .tinybtn{font-family:"Saira Condensed"; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.4px;
+    background:transparent; border:1px solid var(--line2); color:var(--muted); border-radius:7px; padding:5px 9px; cursor:pointer}
+
+  .toast{position:fixed; left:50%; bottom:22px; transform:translateX(-50%) translateY(20px); z-index:60;
+    background:var(--raised); border:1px solid var(--line2); color:var(--txt); padding:11px 16px; border-radius:12px;
+    font-family:"Saira Condensed"; font-weight:700; font-size:13.5px; letter-spacing:.3px; box-shadow:var(--shadow);
+    opacity:0; transition:.25s; pointer-events:none}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+</style>
 </head>
-<body class="primetime-page">
-<script src="assets/js/nav.js"></script>
+<body data-theme="dark">
+<div class="wrap">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div style="font-size:56px;line-height:1;margin:0 auto 10px;display:block;text-align:center;filter:drop-shadow(0 8px 26px rgba(212,160,23,.5));">★</div>
-    <div class="hero-kicker">Texas &bull; Select Fastpitch &bull; 2025 Season</div>
-    <h1>Primetime Fastpitch</h1>
-    <div class="hero-sub">Where Champions Are Made</div>
-    <div class="hero-rule"></div>
-    <p class="hero-tagline">A professionally structured select softball organization built to develop elite young athletes through hard work, dedication, discipline, and passion.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
-      <a href="about.html" class="btn-primary">Learn About Us <i class="ti ti-arrow-right"></i></a>
-      <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">Join the Team</a>
+  <header class="top">
+    <div class="top-row">
+      <div class="crest" id="crest">PT</div>
+      <div class="ttl">
+        <h1 id="evtName">NCS 10U STATE</h1>
+        <div class="sub">
+          <span id="evtDates">Jun 13–14</span><span class="dot"></span>
+          <span id="evtLoc">Taylor, TX</span><span class="dot"></span>
+          <span class="clock" id="clock">--:--</span>
+        </div>
+      </div>
+      <button class="iconbtn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">◐</button>
+      <button class="iconbtn" id="refreshBtn" title="Refresh results" aria-label="Refresh">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+      </button>
     </div>
-  </div>
-</section>
+    <div class="meta-strip" id="metaStrip"></div>
+  </header>
 
-<!-- GOLD STRIP -->
-<div class="gold-strip">
-  <p>2025 Season &nbsp;&bull;&nbsp; Hard Work &nbsp;&bull;&nbsp; Dedication &nbsp;&bull;&nbsp; Discipline &nbsp;&bull;&nbsp; Passion</p>
+  <div class="teampick">
+    <label for="teamSel">My&nbsp;Team</label>
+    <select id="teamSel"></select>
+  </div>
+
+  <div class="hero" id="hero"></div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-view="team">My Team</button>
+    <button class="tab" data-view="sat">Saturday</button>
+    <button class="tab" data-view="stand">Standings</button>
+    <button class="tab" data-view="sun">Bracket</button>
+  </div>
+
+  <div id="content"></div>
+
+  <div class="note" id="srcNote"></div>
 </div>
 
-<div class="page">
+<div class="toast" id="toast"></div>
 
-  <!-- FOUR PILLARS -->
-  <div class="section">
-    <div class="section-label">What we stand for</div>
-    <h2>The Primetime Standard</h2>
-    <div class="section-rule"></div>
-    <div class="card-grid card-grid-4">
-      <div class="card card-gold">
-        <div style="font-size:26px;margin-bottom:10px;">💪</div>
-        <h3>Hard Work</h3>
-        <p>Every rep, every practice, every game. Primetime players show up ready to earn it — no shortcuts, no excuses.</p>
+<script>
+/* =====================================================================
+   PRIMETIME 10U · NCS STATE COMMAND
+   Single-file dashboard. Renders from embedded SEED data, and (once
+   deployed) auto-loads ./data/schedule.json written by the GitHub Action.
+   ===================================================================== */
+
+const CONFIG = {
+  myTeamId: "71355",                 // Primetime 10u  (change to re-default)
+  teamAbbrev: "PT",
+  ncsScheduleUrl: "https://playncs.com/FASTPITCH/Events/Schedule/12472/2026-central-texas-ncs-10u-summer-state-triple-points-open-6gg?division=10U%20OPEN",
+  ncsBracketUrl:  "https://playncs.com/FASTPITCH/Events/Bracket/12472/2026-central-texas-ncs-10u-summer-state-triple-points-open-6gg?division=10U%20OPEN",
+  ncsStandingsUrl:"https://playncs.com/FASTPITCH/Events/Standings/12472/2026-central-texas-ncs-10u-summer-state-triple-points-open-6gg?division=10U%20OPEN",
+  mapsUrl: "https://maps.google.com/?q=Taylor+Athletic+Complex+Taylor+TX",
+  refreshMs: 120000,                 // re-pull data/schedule.json every 2 min
+  gameLenMin: 75                     // assumed game length for LIVE detection
+};
+
+/* ---- Embedded seed (real pulled NCS data, Sat Jun 13 2026) ---- */
+const SEED = {
+  event:{
+    name:"NCS 10U STATE", dates:"Jun 13–14, 2026", location:"Taylor, TX",
+    venue:"Taylor Athletic Complex", director:"Maggie Stoecklein",
+    gateFees:"Weekend $20 · Daily $15 · 12U Free (cash only)",
+    division:"10U OPEN", url:CONFIG.ncsScheduleUrl
+  },
+  updated:null,
+  teams:[
+    {id:"70200", name:"Texas Blaze CTX 10U"},
+    {id:"71028", name:"Texas Blaze Alcozer 10U", guest:true},
+    {id:"72338", name:"Power House Andrade 10U"},
+    {id:"71631", name:"CTX Mayhem -Aviles", guest:true},
+    {id:"72242", name:"Clubhouse Stix 10u Malik"},
+    {id:"71355", name:"Primetime 10u"},
+    {id:"75786", name:"10U BAMBINAS"},
+    {id:"86649", name:"Sting Softball 10u"},
+    {id:"73637", name:"10U Texas Blaze Waco"},
+    {id:"73551", name:"Bombers CTX 10U-Singletary"},
+    {id:"81426", name:"RobCo Rowdies"},
+    {id:"75431", name:"Corona Angels 10U Coleman"}
+  ],
+  games:[
+    g(1,"Sat","2026-06-13T09:00:00","9:00 AM","TAC 1","70200","71028"),
+    g(2,"Sat","2026-06-13T09:00:00","9:00 AM","TAC 2","72338","71631"),
+    g(3,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 1","70200","72242"),
+    g(4,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 2","71355","71631"),
+    g(5,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 3","75786","86649"),
+    g(6,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 5","73637","73551"),
+    g(7,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 1","72242","75431"),
+    g(8,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 2","81426","71355"),
+    g(9,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 3","71028","86649"),
+    g(10,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 5","73637","72338"),
+    g(11,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 1","70200","75786"),
+    g(12,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 2","73551","71631"),
+    g(13,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 3","71028","75431"),
+    g(14,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 5","81426","72338"),
+    g(15,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 1","72242","75786"),
+    g(16,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 2","73551","71355"),
+    g(17,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 3","70200","86649"),
+    g(18,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 5","73637","71631"),
+    g(19,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 1","72242","71028"),
+    g(20,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 2","71355","72338"),
+    g(21,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 3","86649","75431"),
+    g(22,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 5","81426","73637"),
+    g(23,"Sat","2026-06-13T17:00:00","5:00 PM","TAC 3","75786","75431"),
+    g(24,"Sat","2026-06-13T17:00:00","5:00 PM","TAC 5","81426","73551")
+  ]
+};
+function g(no,day,iso,time,field,homeId,awayId){
+  return {id:no, gameNo:no, day, dateISO:iso, time, field,
+          homeId, awayId, homeScore:null, awayScore:null, status:"scheduled"};
+}
+
+/* ---------------- State ---------------- */
+let DATA = JSON.parse(JSON.stringify(SEED));
+let state = { view:"team", teamId:CONFIG.myTeamId, theme:"dark", editing:null };
+const $ = s => document.querySelector(s);
+const nameById = id => (DATA.teams.find(t=>t.id===id)||{}).name || "TBD";
+const cleanName = n => (n||"").replace(/\*+$/,"").trim();
+
+/* ---------------- Helpers ---------------- */
+function teamGames(id){
+  return DATA.games.filter(x=>x.homeId===id||x.awayId===id)
+                   .sort((a,b)=>new Date(a.dateISO)-new Date(b.dateISO));
+}
+function gameStatus(gm){
+  if(gm.status==="final" || (gm.homeScore!=null && gm.awayScore!=null)) return "final";
+  const now=Date.now(), start=new Date(gm.dateISO).getTime();
+  if(now>=start && now < start + CONFIG.gameLenMin*60000) return "live";
+  return "scheduled";
+}
+function resultFor(id,gm){
+  if(gameStatus(gm)!=="final") return null;
+  const mine = id===gm.homeId? gm.homeScore : gm.awayScore;
+  const opp  = id===gm.homeId? gm.awayScore : gm.homeScore;
+  if(mine>opp) return {r:"W",mine,opp}; if(mine<opp) return {r:"L",mine,opp}; return {r:"T",mine,opp};
+}
+function record(id){
+  let w=0,l=0,t=0,rs=0,ra=0,gp=0;
+  teamGames(id).forEach(gm=>{
+    const res=resultFor(id,gm); if(!res) return;
+    gp++; rs+=res.mine; ra+=res.opp;
+    if(res.r==="W")w++; else if(res.r==="L")l++; else t++;
+  });
+  return {w,l,t,rs,ra,diff:rs-ra,gp,pct: gp? (w + t*0.5)/gp : 0};
+}
+function standings(){
+  return DATA.teams.map(tm=>({...tm,...record(tm.id)}))
+    .sort((a,b)=> b.pct-a.pct || b.diff-a.diff || b.rs-a.rs || a.name.localeCompare(b.name));
+}
+function fmtCountdown(ms){
+  if(ms<=0) return "0m";
+  const h=Math.floor(ms/3600000), m=Math.floor((ms%3600000)/60000);
+  return h>0? `${h}h ${m}m` : `${m}m`;
+}
+
+/* ---------------- Render: meta + header ---------------- */
+function renderShell(){
+  $("#crest").textContent = CONFIG.teamAbbrev;
+  $("#evtName").textContent = DATA.event.name;
+  $("#evtDates").textContent = DATA.event.dates;
+  $("#evtLoc").textContent = DATA.event.location;
+  const strip = $("#metaStrip");
+  strip.innerHTML =
+    `<a class="chip map" href="${CONFIG.mapsUrl}" target="_blank" rel="noopener">📍 ${DATA.event.venue}</a>`+
+    `<span class="chip">DIV <b>${DATA.event.division}</b></span>`+
+    `<span class="chip">🎟 ${DATA.event.gateFees}</span>`+
+    `<a class="chip" href="${DATA.event.url}" target="_blank" rel="noopener">NCS ↗</a>`;
+}
+
+/* ---------------- Render: hero next game ---------------- */
+function renderHero(){
+  const id=state.teamId, hero=$("#hero");
+  const games=teamGames(id);
+  // pick: live first, else next scheduled, else last final
+  let gm = games.find(x=>gameStatus(x)==="live")
+        || games.find(x=>gameStatus(x)==="scheduled")
+        || games[games.length-1];
+  if(!gm){ hero.innerHTML=`<div class="eyebrow">No games found</div>`; return; }
+
+  const st=gameStatus(gm);
+  const meId = id, oppId = (gm.homeId===id?gm.awayId:gm.homeId);
+  const homeIsMe = gm.homeId===id;
+  const meScore = homeIsMe?gm.homeScore:gm.awayScore;
+  const oppScore= homeIsMe?gm.awayScore:gm.homeScore;
+  const showScores = st!=="scheduled" && (meScore!=null||oppScore!=null);
+
+  let whenHTML="";
+  if(st==="live"){
+    whenHTML = `<span class="live-pill">● Live</span><span class="det">${gm.field} · Game ${gm.gameNo}</span>`;
+  } else if(st==="final"){
+    const res=resultFor(id,gm);
+    whenHTML = `<span class="countdown">${res?res.r==="W"?"WON":res.r==="L"?"LOST":"TIE":"FINAL"} ${res?res.mine+"–"+res.opp:""}</span><span class="det">${gm.field} · Final</span>`;
+  } else {
+    const ms=new Date(gm.dateISO)-Date.now();
+    whenHTML = ms>0
+      ? `<span class="countdown" data-cd="${gm.dateISO}">in ${fmtCountdown(ms)}</span><span class="det">${gm.time} · ${gm.field}</span>`
+      : `<span class="countdown">${gm.time}</span><span class="det">${gm.field} · Game ${gm.gameNo}</span>`;
+  }
+
+  hero.className = "hero" + (st==="final"?" done":"");
+  hero.innerHTML = `
+    <div class="eyebrow">${st==="live"?"On the field now":st==="final"?"Last result":"Next up"} · Game ${gm.gameNo}</div>
+    <div class="matchup">
+      <div class="side us">
+        <div class="nm">${cleanName(nameById(meId))}</div>
+        ${showScores?`<div class="sc">${meScore??0}</div>`:``}
       </div>
-      <div class="card card-gold">
-        <div style="font-size:26px;margin-bottom:10px;">🎯</div>
-        <h3>Dedication</h3>
-        <p>A commitment to the process, to the team, and to the standard. We build athletes from the ground up, rep by rep.</p>
-      </div>
-      <div class="card card-gold">
-        <div style="font-size:26px;margin-bottom:10px;">⚙️</div>
-        <h3>Discipline</h3>
-        <p>Consistent, focused effort. Primetime athletes are coachable, accountable, and always prepared to compete.</p>
-      </div>
-      <div class="card card-gold">
-        <div style="font-size:26px;margin-bottom:10px;">❤️</div>
-        <h3>Passion</h3>
-        <p>Love for the game shows up in how you play, practice, and carry the Primetime name every single day.</p>
+      <div class="vs">VS</div>
+      <div class="side">
+        <div class="nm">${cleanName(nameById(oppId))}</div>
+        ${showScores?`<div class="sc">${oppScore??0}</div>`:``}
       </div>
     </div>
-  </div>
+    <div class="when">${whenHTML}</div>`;
+}
 
-  <!-- ORG OVERVIEW -->
-  <div class="section">
-    <div class="section-label">The organization</div>
-    <h2>How We Operate</h2>
-    <div class="section-rule"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
-      <div>
-        <p>Most select softball programs are one person — a coach — carrying everything. Scheduling, dues, parent texts, hotel bookings, and lineups all through one phone. That model burns coaches out.</p>
-        <p><strong>Primetime Fastpitch is built differently.</strong> Co-Directors handle every organizational function. The coaching staff owns the field. The Board governs. Everyone stays in their lane.</p>
-        <p>The coaching staff is family-first by design. The org is formally structured so a coach can attend their own child's game without it being a problem — assistant coverage keeps the field running and the org doesn't skip a beat.</p>
-        <a href="about.html" class="btn-primary" style="margin-top:12px;">Full org overview <i class="ti ti-arrow-right"></i></a>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="background:var(--white);border:1px solid var(--g4);border-left:4px solid var(--yellow);border-radius:0 10px 10px 0;padding:14px 18px;">
-          <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:3px;">Co-Directors</div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">Org Operations Leadership</div>
-          <div style="font-size:12px;color:var(--g3);margin-top:2px;">All org functions — finances, scheduling, brand, communications</div>
-        </div>
-        <div style="background:var(--white);border:1px solid var(--g4);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:14px 18px;">
-          <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:3px;">Head Coach</div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">Coaching Staff</div>
-          <div style="font-size:12px;color:var(--g3);margin-top:2px;">All on-field decisions — lineups, development, strategy, rotations.</div>
-        </div>
-        <div style="background:var(--white);border:1px solid var(--g4);border-left:4px solid #1D9E75;border-radius:0 10px 10px 0;padding:14px 18px;">
-          <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:#0F766E;text-transform:uppercase;margin-bottom:3px;">Board of Directors</div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">Governing Board</div>
-          <div style="font-size:12px;color:var(--g3);margin-top:2px;">Policy, governance, community credibility.</div>
-        </div>
-      </div>
+/* ---------------- Render: game card ---------------- */
+function gameCard(gm, opts={}){
+  const st=gameStatus(gm);
+  const mineSide = (gm.homeId===state.teamId)?"home":(gm.awayId===state.teamId)?"away":null;
+  const final = st==="final";
+  const hWin = final && gm.homeScore>gm.awayScore;
+  const aWin = final && gm.awayScore>gm.homeScore;
+
+  const teamRow = (id,score,win)=>{
+    const us = id===state.teamId;
+    return `<div class="g-team ${us?"us":""} ${win?"w":""}">
+      <span class="nm">${cleanName(nameById(id))}</span>
+      <span class="sc">${final && score!=null? score : ""}</span>
+    </div>`;
+  };
+
+  let statusEl;
+  if(st==="live") statusEl=`<span class="badge live">● Live</span>`;
+  else if(final){
+    let res = mineSide? resultFor(state.teamId,gm):null;
+    statusEl=`<span class="badge final">Final</span>`+
+      (res?`<div class="mine-result ${res.r}">${res.r==="W"?"Win":res.r==="L"?"Loss":"Tie"} ${res.mine}–${res.opp}</div>`:``);
+  } else statusEl=`<span class="badge sched">${gm.time}</span>`;
+
+  // edit controls
+  let editEl="";
+  if(state.editing===gm.id){
+    editEl=`<div class="editrow">
+      <input id="hs" type="number" inputmode="numeric" min="0" value="${gm.homeScore??""}" placeholder="${CONFIG.teamAbbrev==='?'?'H':'H'}"/>
+      <span style="color:var(--faint);font-family:Anton">–</span>
+      <input id="as" type="number" inputmode="numeric" min="0" value="${gm.awayScore??""}" placeholder="A"/>
+      <button class="sv" onclick="saveScore(${gm.id})">Save</button>
+    </div>`;
+  }
+
+  return `<div class="game ${mineSide?"mine":""} ${st==="live"?"live":""}">
+    <div class="g-when">
+      <div class="t">${gm.time.replace(/:00/,"").replace(" ","")}</div>
+      <div class="g">G${gm.gameNo}</div>
+      <div class="f">${gm.field.replace("TAC","Fld")}</div>
     </div>
-  </div>
-
-  <!-- SITE SECTIONS -->
-  <div class="section">
-    <div class="section-label">Explore the org</div>
-    <h2>Site Sections</h2>
-    <div class="section-rule"></div>
-    <div class="card-grid card-grid-2" style="gap:12px;">
-      <a href="about.html" class="doc-item">
-        <div class="doc-icon"><i class="ti ti-info-circle"></i></div>
-        <div class="doc-info"><div class="doc-name">About the Org</div><div class="doc-desc">Mission, values, history, and full org structure diagram</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="board.html" class="doc-item">
-        <div class="doc-icon"><i class="ti ti-building"></i></div>
-        <div class="doc-info"><div class="doc-name">Board of Directors</div><div class="doc-desc">Seats, roles, voting structure, and governing members</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="coaching.html" class="doc-item">
-        <div class="doc-icon"><i class="ti ti-baseball"></i></div>
-        <div class="doc-info"><div class="doc-name">Coaching Staff</div><div class="doc-desc">Head coach, assistant staff, philosophy, and the firewall policy</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="bylaws.html" class="doc-item">
-        <div class="doc-icon"><i class="ti ti-scale"></i></div>
-        <div class="doc-info"><div class="doc-name">Bylaws & Voting</div><div class="doc-desc">Governance rules, voting categories, and procedures</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="docs.html" class="doc-item">
-        <div class="doc-icon"><i class="ti ti-file-download"></i></div>
-        <div class="doc-info"><div class="doc-name">Documents</div><div class="doc-desc">Download official org documents — bylaws, welcome packet, more</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="finances.html" class="doc-item">
-        <div class="doc-icon"><i class="ti ti-coin"></i></div>
-        <div class="doc-info"><div class="doc-name">Financial Decree</div><div class="doc-desc">Dues waiver policy, fund allocation, tournament costs, and accountability calendar</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="fundraising.html" class="doc-item" style="border-left:3px solid var(--yellow);border-radius:0 10px 10px 0;">
-        <div class="doc-icon" style="background:var(--yellow-m);border-color:var(--yellow);"><i class="ti ti-heart" style="color:var(--blue);"></i></div>
-        <div class="doc-info"><div class="doc-name" style="color:var(--blue2);">Support Us</div><div class="doc-desc">Booster donations, sponsorships, and fundraising calendar</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="roster.html" class="doc-item" style="border-left:3px solid var(--blue);border-radius:0 10px 10px 0;">
-        <div class="doc-icon" style="background:var(--blue-l);border-color:var(--blue-m);"><i class="ti ti-users" style="color:var(--blue);"></i></div>
-        <div class="doc-info"><div class="doc-name" style="color:var(--blue2);">Roster</div><div class="doc-desc">Player profiles and team roster by age division</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
-      <a href="contact.html" class="doc-item">
-        <div class="doc-icon"><i class="ti ti-mail"></i></div>
-        <div class="doc-info"><div class="doc-name">Contact & Tryouts</div><div class="doc-desc">Roster openings, coaching roles, and sponsorship inquiries</div></div>
-        <i class="ti ti-arrow-right doc-dl"></i>
-      </a>
+    <div class="g-teams">
+      ${teamRow(gm.homeId,gm.homeScore,hWin)}
+      <div class="g-divider"></div>
+      ${teamRow(gm.awayId,gm.awayScore,aWin)}
+      ${editEl}
     </div>
-  </div>
-
-  <!-- MISSION CALLOUT -->
-  <div class="section">
-    <div class="callout">
-      <p style="font-family:var(--display);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;"><span style="color:var(--blue);">Mission:</span> To develop elite young softball athletes through disciplined coaching, organized competition, and a team environment that builds confidence and love of the game — on and off the field.</p>
+    <div class="g-status">
+      ${statusEl}
+      ${opts.editable?`<div style="margin-top:7px"><button class="tinybtn" onclick="toggleEdit(${gm.id})">${state.editing===gm.id?"Cancel":"Score"}</button></div>`:""}
     </div>
-  </div>
+  </div>`;
+}
 
-</div>
+/* ---------------- Views ---------------- */
+function viewTeam(){
+  const id=state.teamId, games=teamGames(id), rec=record(id);
+  if(!games.length) return `<div class="empty"><div class="ic">🥎</div><h3>No games</h3><p>This team has no games in the loaded schedule.</p></div>`;
+  let html = `<div class="recordbar">
+    <div class="stat w"><div class="n">${rec.w}</div><div class="l">Wins</div></div>
+    <div class="stat l-stat"><div class="n">${rec.l}</div><div class="l">Losses</div></div>
+    <div class="stat"><div class="n">${rec.diff>0?"+":""}${rec.diff}</div><div class="l">Run Diff</div></div>
+    <div class="stat"><div class="n">${games.length}</div><div class="l">Pool Gms</div></div>
+  </div>`;
+  html += `<div class="slot-h">Saturday Pool · ${cleanName(nameById(id))}</div>`;
+  games.forEach(gm=> html += gameCard(gm,{editable:true}));
+  return html;
+}
+function viewDay(day){
+  const games=DATA.games.filter(x=>x.day===day).sort((a,b)=>new Date(a.dateISO)-new Date(b.dateISO));
+  if(!games.length){
+    if(day==="Sun") return bracketEmpty();
+    return `<div class="empty"><div class="ic">📅</div><h3>No ${day} games</h3><p>Nothing loaded for this day yet.</p></div>`;
+  }
+  // group by time
+  let html="", lastTime=null;
+  games.forEach(gm=>{
+    if(gm.time!==lastTime){ html+=`<div class="slot-h">${gm.time}</div>`; lastTime=gm.time; }
+    html += gameCard(gm,{editable:true});
+  });
+  return html;
+}
+function viewStandings(){
+  const rows=standings();
+  const anyPlayed = rows.some(r=>r.gp>0);
+  let html = `<table class="stand"><thead><tr>
+    <th>Team</th><th>W</th><th>L</th><th>PCT</th><th>RF</th><th>RA</th><th>DIFF</th></tr></thead><tbody>`;
+  rows.forEach((r,i)=>{
+    html += `<tr class="${r.id===state.teamId?"us":""}">
+      <td><span class="rk">${i+1}</span>${cleanName(r.name)}</td>
+      <td>${r.w}</td><td>${r.l}</td>
+      <td>${r.gp? r.pct.toFixed(3).replace(/^0/,"") : "—"}</td>
+      <td>${r.gp?r.rs:"—"}</td><td>${r.gp?r.ra:"—"}</td>
+      <td>${r.gp? (r.diff>0?"+":"")+r.diff : "—"}</td></tr>`;
+  });
+  html += `</tbody></table>`;
+  if(!anyPlayed){
+    html += `<div class="note">Standings populate as results come in. This is a live computed table (win% → run diff → runs for). 
+      Official NCS tiebreakers may differ — <a href="${CONFIG.ncsStandingsUrl}" target="_blank" rel="noopener">view official standings ↗</a></div>`;
+  } else {
+    html += `<div class="note">Computed from loaded results · <a href="${CONFIG.ncsStandingsUrl}" target="_blank" rel="noopener">official NCS standings ↗</a></div>`;
+  }
+  return html;
+}
+function bracketEmpty(){
+  return `<div class="empty">
+    <div class="ic">🏆</div>
+    <h3>Bracket drops Sunday</h3>
+    <p>Seeding is set after Saturday pool play wraps. Once NCS posts the Sunday bracket, it loads here automatically — or jump straight to the official bracket.</p>
+    <a class="btn" href="${CONFIG.ncsBracketUrl}" target="_blank" rel="noopener">Open NCS Bracket ↗</a>
+  </div>`;
+}
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">★ Primetime Fastpitch</div>
-  <div class="footer-links">
-    <a href="about.html">About</a>
-    <a href="board.html">Board</a>
-    <a href="coaching.html">Coaching</a>
-    <a href="bylaws.html">Bylaws</a>
-    <a href="policies.html">Policies</a>
-    <a href="docs.html">Documents</a>
-    <a href="finances.html">Finances</a>
-    <a href="fundraising.html">Support Us</a>
-    <a href="roster.html">Roster</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <p>Texas &bull; Select Fastpitch Softball &bull; USSSA &bull; NSA &bull; NCS &bull; 2025</p>
-  <p style="margin-top:4px;">Hard Work &bull; Dedication &bull; Discipline &bull; Passion &bull; Where Champions Are Made</p>
-</footer>
+/* ---------------- Mount ---------------- */
+function render(){
+  renderShell();
+  renderHero();
+  const c=$("#content");
+  if(state.view==="team") c.innerHTML=viewTeam();
+  else if(state.view==="sat") c.innerHTML=viewDay("Sat");
+  else if(state.view==="stand") c.innerHTML=viewStandings();
+  else if(state.view==="sun") c.innerHTML=viewDay("Sun");
+  const up = DATA.updated ? new Date(DATA.updated).toLocaleString([], {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}) : "seed schedule (not yet live)";
+  $("#srcNote").innerHTML = `Source: NCS Event 12472 · 10U OPEN · Last updated: <b>${up}</b><br>Live results auto-load from <code>data/schedule.json</code> once deployed with the scraper Action.`;
+}
+
+/* ---------------- Interactions ---------------- */
+function toggleEdit(id){ state.editing = state.editing===id?null:id; render(); }
+function saveScore(id){
+  const h=parseInt(($("#hs")||{}).value,10), a=parseInt(($("#as")||{}).value,10);
+  const gm=DATA.games.find(x=>x.id===id); if(!gm) return;
+  gm.homeScore=isNaN(h)?null:h; gm.awayScore=isNaN(a)?null:a;
+  gm.status=(gm.homeScore!=null&&gm.awayScore!=null)?"final":"scheduled";
+  state.editing=null; render(); toast("Score saved (this session)");
+}
+window.toggleEdit=toggleEdit; window.saveScore=saveScore;
+
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+/* tabs */
+$("#tabs").addEventListener("click",e=>{
+  const b=e.target.closest(".tab"); if(!b) return;
+  state.view=b.dataset.view; state.editing=null;
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));
+  render();
+});
+
+/* team selector */
+function buildTeamSelect(){
+  const sel=$("#teamSel");
+  sel.innerHTML = DATA.teams.slice().sort((a,b)=>cleanName(a.name).localeCompare(cleanName(b.name)))
+    .map(t=>`<option value="${t.id}" ${t.id===state.teamId?"selected":""}>${cleanName(t.name)}${t.guest?" ✦":""}</option>`).join("");
+}
+$("#teamSel").addEventListener("change",e=>{ state.teamId=e.target.value; state.editing=null;
+  CONFIG.teamAbbrev = abbrev(cleanName(nameById(state.teamId))); render(); });
+function abbrev(n){ const w=n.replace(/[^A-Za-z0-9 ]/g,"").trim().split(/\s+/); 
+  return ((w[0]||"")[0]||"")+((w[1]||"")[0]||(w[0]||"")[1]||""); }
+
+/* theme */
+$("#themeBtn").addEventListener("click",()=>{
+  state.theme = state.theme==="dark"?"light":"dark";
+  document.body.dataset.theme=state.theme;
+  $("#themeBtn").textContent = state.theme==="dark"?"◐":"◑";
+});
+
+/* refresh from data/schedule.json */
+async function pullLive(showToast){
+  const btn=$("#refreshBtn"); btn.classList.add("spin");
+  try{
+    const r=await fetch("./data/schedule.json",{cache:"no-store"});
+    if(r.ok){
+      const j=await r.json();
+      if(j && Array.isArray(j.games) && j.games.length){
+        DATA=j; if(!DATA.event) DATA.event=SEED.event;
+        buildTeamSelect();
+        if(!DATA.teams.find(t=>t.id===state.teamId)) state.teamId=DATA.teams[0].id;
+        render();
+        if(showToast) toast("Results updated");
+        return;
+      }
+    }
+    if(showToast) toast("No live file yet — showing schedule");
+  }catch(err){
+    if(showToast) toast("Offline — showing loaded data");
+  }finally{
+    setTimeout(()=>btn.classList.remove("spin"),500);
+  }
+}
+$("#refreshBtn").addEventListener("click",()=>pullLive(true));
+
+/* clock + live countdown tick */
+function tick(){
+  const now=new Date();
+  $("#clock").textContent = now.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+  document.querySelectorAll("[data-cd]").forEach(el=>{
+    const ms=new Date(el.dataset.cd)-now;
+    if(ms<=0){ render(); } else { el.textContent="in "+fmtCountdown(ms); }
+  });
+}
+
+/* ---------------- Init ---------------- */
+buildTeamSelect();
+CONFIG.teamAbbrev = abbrev(cleanName(nameById(state.teamId)));
+render();
+pullLive(false);                       // try live file silently on load
+setInterval(tick,1000);
+setInterval(()=>pullLive(false),CONFIG.refreshMs);
+</script>
 </body>
 </html>
