@@ -11,7 +11,7 @@ const NAV_LINKS = [
   ['Team Info', `${sitePrefix}index.html#team-info`, 'team-info'],
   ['Roster', `${sitePrefix}roster/`, 'roster'],
   ['Schedule', `${sitePrefix}index.html#schedule`, 'schedule'],
-  ['NCS Tourn Tracker', `${sitePrefix}index.html#ncs-tourn-tracker`, 'ncs-tourn-tracker'],
+  ['NCS Dashboard', `${sitePrefix}ncs-tracker/`, 'ncs-dashboard'],
   ['Fundraising', `${sitePrefix}index.html#fundraising`, 'fundraising'],
 ];
 
