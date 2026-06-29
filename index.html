@@ -20,9 +20,10 @@
     <h1>Primetime Fastpitch</h1>
     <div class="hero-sub">Where Champions Are Made</div>
     <div class="hero-rule"></div>
-    <p class="hero-tagline">A clean one-page team site for team information, roster visibility, schedule updates, GameChanger schedule, NCS tournament tracking, and fundraising.</p>
+    <p class="hero-tagline">A clean team site for team information, roster visibility, schedule updates, GameChanger schedule, NCS tournament tracking, and fundraising.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
       <a href="#team-info" class="btn-primary">Team Info <i class="ti ti-arrow-right"></i></a>
+      <a href="roster/" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">Open Roster</a>
       <a href="#ncs-tourn-tracker" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">NCS Tourn Tracker</a>
     </div>
   </div>
@@ -43,15 +44,15 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;">
       <div>
         <p><strong>Primetime Fastpitch</strong> is structured as a simple, family-ready team hub. The site helps parents, players, coaches, and supporters quickly find the most-used information without clicking through multiple pages.</p>
-        <p>This home page uses anchor sections only: Home, Team Info, Roster, Schedule, NCS Tourn Tracker, and Fundraising.</p>
+        <p>The roster now lives on its own page at <a href="roster/" style="color:var(--blue);font-weight:800;">/roster/</a>, with player cards, profile links, and image paths from <code>assets/players/firstname-lastinitial.jpg</code>.</p>
         <p>Use this section for coach contacts, practice expectations, tournament notes, team standards, communication rules, and parent reminders.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="background:var(--white);border:1px solid var(--g4);border-left:4px solid var(--yellow);border-radius:0 10px 10px 0;padding:14px 18px;">
-          <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:3px;">Team Hub</div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">One-page anchor navigation</div>
-          <div style="font-size:12px;color:var(--g3);margin-top:2px;">Quick access to the sections families need most.</div>
-        </div>
+        <a href="roster/" style="background:var(--white);border:1px solid var(--g4);border-left:4px solid var(--yellow);border-radius:0 10px 10px 0;padding:14px 18px;text-decoration:none;display:block;">
+          <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:3px;">Roster</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Standalone roster page</div>
+          <div style="font-size:12px;color:var(--g3);margin-top:2px;">Open the full Primetime player-card roster.</div>
+        </a>
         <div style="background:var(--white);border:1px solid var(--g4);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:14px 18px;">
           <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:3px;">GameChanger</div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);">Team schedule source</div>
@@ -63,33 +64,6 @@
           <div style="font-size:12px;color:var(--g3);margin-top:2px;">Past and upcoming NCS events are tracked in the NCS Tourn Tracker.</div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- ROSTER -->
-  <div class="section" id="roster">
-    <div class="section-label">Official Team Roster</div>
-    <h2>Player Cards</h2>
-    <div class="section-rule"></div>
-    <p>Primetime player cards using the Venom-style card layout. Player images and profile stats will be added as they become available.</p>
-    <div class="roster-summary">
-      <span class="roster-summary-pill"><i class="ti ti-users"></i> 11 Players</span>
-      <span class="roster-summary-pill"><i class="ti ti-shirt-sport"></i> Jersey Numbers Confirmed</span>
-      <span class="roster-summary-pill"><i class="ti ti-id"></i> Player Profile Pages</span>
-    </div>
-
-    <div class="player-card-grid">
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">5</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#5</div></div><div class="player-body"><h3 class="player-name">Kylie Collins</h3><div class="player-divider"></div><a href="players/kylie-collins.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">7</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#7</div></div><div class="player-body"><h3 class="player-name">Zoey Arabella Vela</h3><div class="player-divider"></div><a href="players/zoey-arabella-vela.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">10</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#10</div></div><div class="player-body"><h3 class="player-name">Khloe Lazo</h3><div class="player-divider"></div><a href="players/khloe-lazo.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">12</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#12</div></div><div class="player-body"><h3 class="player-name">Jordynn Wright</h3><div class="player-divider"></div><a href="players/jordynn-wright.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">13</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#13</div></div><div class="player-body"><h3 class="player-name">Araceli Sophia Noveron</h3><div class="player-divider"></div><a href="players/araceli-sophia-noveron.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">15</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#15</div></div><div class="player-body"><h3 class="player-name">Lyla Terrazas</h3><div class="player-divider"></div><a href="players/lyla-terrazas.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">17</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#17</div></div><div class="player-body"><h3 class="player-name">Elena Alejandra Grimaldo</h3><div class="player-divider"></div><a href="players/elena-alejandra-grimaldo.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">24</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#24</div></div><div class="player-body"><h3 class="player-name">Ella Gamble</h3><div class="player-divider"></div><a href="players/ella-gamble.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">27</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#27</div></div><div class="player-body"><h3 class="player-name">Romina Alexandra Trevino</h3><div class="player-divider"></div><a href="players/romina-trevino.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">30</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#30</div></div><div class="player-body"><h3 class="player-name">Sophia Texas Hill</h3><div class="player-divider"></div><a href="players/sophia-texas-hill.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
-      <article class="player-card"><div class="player-photo"><span class="player-watermark">42</span><i class="ti ti-user-circle"></i><span style="position:absolute;z-index:2;bottom:78px;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.65);">Player Image Coming Soon</span><div class="jersey-badge">#42</div></div><div class="player-body"><h3 class="player-name">Zeriyah Campos</h3><div class="player-divider"></div><a href="players/zeriyah-campos.html" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a></div></article>
     </div>
   </div>
 
@@ -155,7 +129,7 @@
   <div class="footer-links">
     <a href="#home">HOME</a>
     <a href="#team-info">Team Info</a>
-    <a href="#roster">Roster</a>
+    <a href="roster/">Roster</a>
     <a href="#schedule">Schedule</a>
     <a href="#ncs-tourn-tracker">NCS Tourn Tracker</a>
     <a href="#fundraising">Fundraising</a>
