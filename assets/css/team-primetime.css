@@ -99,16 +99,16 @@ body.primetime-page {
   border-color: var(--blue-m);
 }
 
-/* ===== PLAYER CARD ROSTER LOOK ===== */
+/* ===== PLAYER CARD ROSTER LOOK — PRIMETIME BLACK + GOLD ===== */
 .primetime-page #roster {
   background:
-    radial-gradient(circle at 10% 0%, rgba(212,160,23,.12), transparent 30%),
-    radial-gradient(circle at 90% 12%, rgba(54,197,240,.08), transparent 26%),
-    #070509;
+    radial-gradient(circle at 10% 0%, rgba(212,160,23,.14), transparent 30%),
+    radial-gradient(circle at 90% 12%, rgba(212,160,23,.09), transparent 26%),
+    linear-gradient(180deg, #080808 0%, #101010 45%, #050505 100%);
   border-radius: 22px;
   margin: 30px 0;
   padding: 38px 26px;
-  border: 1px solid rgba(212,160,23,.22);
+  border: 1px solid rgba(212,160,23,.30);
   box-shadow: 0 28px 70px -42px #000;
 }
 .primetime-page #roster .section-label,
@@ -129,22 +129,22 @@ body.primetime-page {
   gap:8px;
   padding: 9px 14px;
   border-radius:999px;
-  background:#f1e7ff;
-  color:#3c2355;
+  background:#fff8e6;
+  color:#1a1a1a;
   font-family:var(--display);
   font-size:11px;
   font-weight:900;
   letter-spacing:1.1px;
   text-transform:uppercase;
-  border:1px solid rgba(255,255,255,.28);
+  border:1px solid rgba(212,160,23,.55);
 }
 .primetime-page .roster-summary-pill i { color: var(--yellow2); }
 .primetime-page .status-dot {
   width:10px;
   height:10px;
   border-radius:50%;
-  background:#24df6b;
-  box-shadow:0 0 0 4px rgba(36,223,107,.14);
+  background:var(--yellow);
+  box-shadow:0 0 0 4px rgba(212,160,23,.15);
 }
 .primetime-page .player-card-grid {
   display:grid;
@@ -155,8 +155,8 @@ body.primetime-page {
   position:relative;
   overflow:hidden;
   border-radius:9px;
-  background:linear-gradient(180deg,#160823 0%,#210a35 45%,#13071f 100%);
-  border:1px solid rgba(212,160,23,.25);
+  background:linear-gradient(180deg,#171717 0%,#0f0f0f 45%,#080808 100%);
+  border:1px solid rgba(212,160,23,.32);
   box-shadow:0 22px 48px -34px #000;
 }
 .primetime-page .player-card:before {
@@ -166,7 +166,7 @@ body.primetime-page {
   top:0;
   width:88px;
   height:5px;
-  background:linear-gradient(90deg,#7c36ff,var(--yellow));
+  background:linear-gradient(90deg,#ffffff,var(--yellow));
   z-index:2;
 }
 .primetime-page .player-photo {
@@ -174,9 +174,9 @@ body.primetime-page {
   height:176px;
   overflow:hidden;
   background:
-    linear-gradient(135deg,rgba(212,160,23,.15),transparent 34%),
-    radial-gradient(circle at 68% 28%,rgba(124,54,255,.33),transparent 28%),
-    linear-gradient(145deg,#0d0614,#251037 60%,#0a050d);
+    linear-gradient(135deg,rgba(212,160,23,.20),transparent 34%),
+    radial-gradient(circle at 68% 28%,rgba(212,160,23,.18),transparent 28%),
+    linear-gradient(145deg,#050505,#202020 62%,#090909);
   display:grid;
   place-items:center;
 }
@@ -184,20 +184,20 @@ body.primetime-page {
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.62));
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.72));
 }
 .primetime-page .player-photo i {
   position:relative;
   z-index:1;
   font-size:58px;
-  color:#e5d3ff;
-  opacity:.78;
+  color:#f5e4b1;
+  opacity:.72;
 }
 .primetime-page .player-watermark {
   position:absolute;
   right:14px;
   bottom:4px;
-  color:rgba(255,255,255,.06);
+  color:rgba(212,160,23,.10);
   font-family:Georgia,serif;
   font-size:78px;
   font-weight:900;
@@ -214,7 +214,7 @@ body.primetime-page {
   height:56px;
   padding:0 10px;
   border-radius:999px;
-  background:linear-gradient(145deg,#5b2391,#2a0e42);
+  background:linear-gradient(145deg,#0b0b0b,#222222);
   color:#fff;
   border:3px solid var(--yellow);
   font-family:var(--display);
@@ -251,12 +251,12 @@ body.primetime-page {
 }
 .primetime-page .player-divider {
   height:1px;
-  background:rgba(255,255,255,.16);
+  background:rgba(212,160,23,.26);
   margin:0 0 17px;
 }
 .primetime-page .player-stat-label {
   margin-bottom:10px;
-  color:#8560bb;
+  color:var(--yellow2);
   font-family:var(--display);
   font-size:10px;
   font-weight:950;
@@ -269,25 +269,25 @@ body.primetime-page {
   gap:9px;
 }
 .primetime-page .player-stat {
-  border:1px solid rgba(212,160,23,.20);
+  border:1px solid rgba(212,160,23,.25);
   border-radius:7px;
-  background:rgba(5,4,7,.45);
+  background:rgba(255,248,230,.06);
   padding:9px 6px 8px;
   text-align:center;
 }
 .primetime-page .player-stat strong {
   display:block;
-  color:#8f3dff;
+  color:var(--yellow);
   font-family:var(--display);
   font-size:18px;
   font-weight:950;
   line-height:1;
-  text-shadow:0 0 18px rgba(143,61,255,.35);
+  text-shadow:0 0 18px rgba(212,160,23,.30);
 }
 .primetime-page .player-stat span {
   display:block;
   margin-top:6px;
-  color:#fff;
+  color:#fff8e6;
   font-size:8px;
   font-weight:850;
   letter-spacing:.9px;
@@ -296,7 +296,7 @@ body.primetime-page {
 }
 .primetime-page .player-note {
   margin:13px 0 0 !important;
-  color:#e7dff0 !important;
+  color:#f7f0df !important;
   font-size:12px;
   line-height:1.45;
 }
