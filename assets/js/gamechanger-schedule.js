@@ -1,4 +1,13 @@
 const GC_DATA_PATH = 'assets/data/gamechanger-schedule.json';
+const GC_STYLESHEET = 'assets/css/gamechanger-schedule.css';
+
+function gcLoadStylesheet() {
+  if (document.querySelector(`link[href="${GC_STYLESHEET}"]`)) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = GC_STYLESHEET;
+  document.head.appendChild(link);
+}
 
 function gcFormatDate(value) {
   if (!value) return 'Date TBD';
@@ -117,6 +126,7 @@ function gcRenderGames(container, data, sourceUrl) {
 }
 
 async function loadGameChangerSchedule() {
+  gcLoadStylesheet();
   const container = document.querySelector('[data-gamechanger-schedule]');
   if (!container) return;
 
