@@ -3,6 +3,7 @@ const currentFile = currentPath.split('/').pop() || 'index.html';
 const isHomePage = currentFile === 'index.html' || currentFile === '';
 const isPlayerPage = currentPath.includes('/players/');
 const anchorPrefix = isPlayerPage ? '../index.html' : (isHomePage ? '' : 'index.html');
+const assetPrefix = isPlayerPage ? '../' : '';
 
 const NAV_LINKS = [
   ['HOME', 'home'],
@@ -33,8 +34,18 @@ function setActiveAnchor() {
   });
 }
 
+function loadPlayerImageData() {
+  if (document.querySelector('script[data-primetime-player-images]')) return;
+  const script = document.createElement('script');
+  script.src = `${assetPrefix}assets/js/player-image-data.js`;
+  script.defer = true;
+  script.dataset.primetimePlayerImages = 'true';
+  document.head.appendChild(script);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
   setActiveAnchor();
+  loadPlayerImageData();
   window.addEventListener('hashchange', setActiveAnchor);
 });
