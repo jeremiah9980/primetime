@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/team-primetime.css">
   <link rel="stylesheet" href="assets/css/ncs-events.css">
+  <link rel="stylesheet" href="assets/css/home-social.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 </head>
 <body class="primetime-page">
@@ -20,10 +21,11 @@
     <h1>Primetime Fastpitch</h1>
     <div class="hero-sub">Where Champions Are Made</div>
     <div class="hero-rule"></div>
-    <p class="hero-tagline">A clean team site for team information, roster visibility, schedule updates, GameChanger schedule, NCS tournament scoring dashboards, and fundraising.</p>
+    <p class="hero-tagline">A clean team site for team information, roster visibility, schedule updates, GameChanger schedule, NCS tournament scoring dashboards, social media, and fundraising.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
       <a href="#team-info" class="btn-primary">Team Info <i class="ti ti-arrow-right"></i></a>
       <a href="roster/" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">Open Roster</a>
+      <a href="#social-media" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">Social Media</a>
       <a href="ncs-tracker/" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">NCS Dashboard</a>
     </div>
   </div>
@@ -31,7 +33,7 @@
 
 <!-- GOLD STRIP -->
 <div class="gold-strip">
-  <p>HOME &nbsp;&bull;&nbsp; Team Info &nbsp;&bull;&nbsp; Roster &nbsp;&bull;&nbsp; Schedule &nbsp;&bull;&nbsp; NCS Dashboard &nbsp;&bull;&nbsp; Fundraising</p>
+  <p>HOME &nbsp;&bull;&nbsp; Team Info &nbsp;&bull;&nbsp; Roster &nbsp;&bull;&nbsp; Schedule &nbsp;&bull;&nbsp; NCS Dashboard &nbsp;&bull;&nbsp; Social Media &nbsp;&bull;&nbsp; Fundraising</p>
 </div>
 
 <div class="page">
@@ -66,6 +68,40 @@
       </div>
     </div>
   </div>
+
+  <!-- SOCIAL MEDIA -->
+  <section class="home-social-section" id="social-media">
+    <div class="home-social-head">
+      <div>
+        <div class="home-social-kicker">Follow the journey</div>
+        <h2 class="home-social-title">Primetime Social</h2>
+      </div>
+      <p class="home-social-copy">See team photos, reels, weekend moments, player energy, and updates from the Primetime Facebook profile.</p>
+    </div>
+    <div class="home-social-grid">
+      <article class="home-social-panel">
+        <div class="home-social-panel-head">
+          <div class="home-social-platform">
+            <div class="home-social-platform-icon"><i class="ti ti-brand-facebook"></i></div>
+            <div class="home-social-platform-text"><strong>Facebook Photos</strong><span>Team photos and player moments</span></div>
+          </div>
+          <a class="home-social-external" href="https://www.facebook.com/profile.php?id=61562686006736&sk=photos" target="_blank" rel="noopener noreferrer"><span>Open Photos</span><i class="ti ti-external-link"></i></a>
+        </div>
+        <div class="home-social-embed-wrap" id="primetime-facebook-photos-embed"></div>
+      </article>
+      <article class="home-social-panel">
+        <div class="home-social-panel-head">
+          <div class="home-social-platform">
+            <div class="home-social-platform-icon"><i class="ti ti-brand-facebook"></i></div>
+            <div class="home-social-platform-text"><strong>Facebook Reels</strong><span>Short-form videos and highlights</span></div>
+          </div>
+          <a class="home-social-external" href="https://www.facebook.com/profile.php?id=61562686006736&sk=reels_tab" target="_blank" rel="noopener noreferrer"><span>Open Reels</span><i class="ti ti-external-link"></i></a>
+        </div>
+        <div class="home-social-embed-wrap" id="primetime-facebook-reels-embed"></div>
+      </article>
+    </div>
+    <p class="home-social-note">Facebook privacy settings, browser tracking protection, or content blockers may limit embedded viewing. The buttons open the exact Photos and Reels tabs directly.</p>
+  </section>
 
   <!-- SCHEDULE -->
   <div class="section" id="schedule">
@@ -130,6 +166,7 @@
     <a href="#home">HOME</a>
     <a href="#team-info">Team Info</a>
     <a href="roster/">Roster</a>
+    <a href="#social-media">Social Media</a>
     <a href="#schedule">Schedule</a>
     <a href="ncs-tracker/">NCS Dashboard</a>
     <a href="#fundraising">Fundraising</a>
@@ -139,5 +176,6 @@
 </footer>
 <script src="assets/js/gamechanger-schedule.js"></script>
 <script src="assets/js/ncs-events.js"></script>
+<script src="assets/js/home-social.js"></script>
 </body>
 </html>
