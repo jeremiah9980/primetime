@@ -1,6 +1,8 @@
-const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+const currentPath = window.location.pathname;
+const currentFile = currentPath.split('/').pop() || 'index.html';
 const isHomePage = currentFile === 'index.html' || currentFile === '';
-const anchorPrefix = isHomePage ? '' : 'index.html';
+const isPlayerPage = currentPath.includes('/players/');
+const anchorPrefix = isPlayerPage ? '../index.html' : (isHomePage ? '' : 'index.html');
 
 const NAV_LINKS = [
   ['HOME', 'home'],
@@ -25,7 +27,7 @@ const NAV_HTML = `
 </nav>`;
 
 function setActiveAnchor() {
-  const activeId = (window.location.hash || '#home').replace('#', '');
+  const activeId = isPlayerPage ? 'roster' : (window.location.hash || '#home').replace('#', '');
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.classList.toggle('active', a.dataset.anchorId === activeId);
   });
