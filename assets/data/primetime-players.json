@@ -1,13 +1,13 @@
 [
-  { "number": "5", "name": "Kylie Collins", "slug": "kylie-collins" },
-  { "number": "7", "name": "Zoey Arabella Vela", "slug": "zoey-arabella-vela" },
-  { "number": "10", "name": "Khloe Lazo", "slug": "khloe-lazo" },
-  { "number": "12", "name": "Jordynn Wright", "slug": "jordynn-wright" },
-  { "number": "13", "name": "Araceli Sophia Noveron", "slug": "araceli-sophia-noveron" },
-  { "number": "15", "name": "Lyla Terrazas", "slug": "lyla-terrazas" },
-  { "number": "17", "name": "Elena Alejandra Grimaldo", "slug": "elena-alejandra-grimaldo" },
-  { "number": "24", "name": "Ella Gamble", "slug": "ella-gamble" },
-  { "number": "27", "name": "Romina Alexandra Trevino", "slug": "romina-alexandra-trevino" },
-  { "number": "30", "name": "Sophia Texas Hill", "slug": "sophia-texas-hill" },
-  { "number": "42", "name": "Zeriyah Campos", "slug": "zeriyah-campos" }
+  { "number": "5", "name": "Kylie Collins", "slug": "kylie-collins", "image": "kylie-c.jpg" },
+  { "number": "7", "name": "Zoey Arabella Vela", "slug": "zoey-arabella-vela", "image": "zoey-v.jpg" },
+  { "number": "10", "name": "Khloe Lazo", "slug": "khloe-lazo", "image": "khloe-l.jpg" },
+  { "number": "12", "name": "Jordynn Wright", "slug": "jordynn-wright", "image": "jordynn-w.jpg" },
+  { "number": "13", "name": "Araceli Sophia Noveron", "slug": "araceli-sophia-noveron", "image": "araceli-n.jpg" },
+  { "number": "15", "name": "Lyla Terrazas", "slug": "lyla-terrazas", "image": "lyla-t.jpg" },
+  { "number": "17", "name": "Elena Alejandra Grimaldo", "slug": "elena-alejandra-grimaldo", "image": "elena-g.jpg" },
+  { "number": "24", "name": "Ella Gamble", "slug": "ella-gamble", "image": "ella-g.jpg" },
+  { "number": "27", "name": "Romina Alexandra Trevino", "slug": "romina-alexandra-trevino", "image": "romina-t.jpg" },
+  { "number": "30", "name": "Sophia Texas Hill", "slug": "sophia-texas-hill", "image": "sophia-h.jpg" },
+  { "number": "42", "name": "Zeriyah Campos", "slug": "zeriyah-campos", "image": "zeriyah-c.jpg" }
 ]
