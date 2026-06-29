@@ -1,0 +1,38 @@
+name: Sync GameChanger Schedule
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-gamechanger-schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch GameChanger schedule
+        env:
+          GC_SCHEDULE_URL: https://web.gc.com/teams/560mQaj2c3aH/2026-spring-primetime-10u/schedule
+        run: node scripts/fetch-gamechanger-schedule.mjs
+
+      - name: Commit schedule data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/gamechanger-schedule.json
+          if git diff --cached --quiet; then
+            echo "No schedule changes to commit"
+          else
+            git commit -m "Sync GameChanger schedule"
+            git push
+          fi
