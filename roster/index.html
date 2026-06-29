@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roster · Primetime Fastpitch</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/team-primetime.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+</head>
+<body class="primetime-page roster-page">
+<script src="../assets/js/nav.js"></script>
+
+<section class="hero" id="roster-home">
+  <div class="hero-inner">
+    <div style="font-size:56px;line-height:1;margin:0 auto 10px;display:block;text-align:center;filter:drop-shadow(0 8px 26px rgba(212,160,23,.5));">★</div>
+    <div class="hero-kicker">Primetime Fastpitch · Official Team Roster</div>
+    <h1>Player Cards</h1>
+    <div class="hero-sub">Primetime 10U</div>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">Standalone roster page with player cards, jersey numbers, profile links, and player image paths from <strong>assets/players/firstname-lastinitial.jpg</strong>.</p>
+  </div>
+</section>
+
+<div class="gold-strip">
+  <p>Official Roster &nbsp;&bull;&nbsp; Player Cards &nbsp;&bull;&nbsp; Profile Pages &nbsp;&bull;&nbsp; Primetime Fastpitch</p>
+</div>
+
+<main class="page">
+  <section class="section" id="roster">
+    <div class="section-label">Official Team Roster</div>
+    <h2>Primetime Player Cards</h2>
+    <div class="section-rule"></div>
+    <p>Player cards use image filenames from <code>assets/players/</code>. Example: Khloe Lazo reads <code>assets/players/khloe-l.jpg</code>, and Ella Gamble reads <code>assets/players/ella-g.jpg</code>.</p>
+    <div class="roster-summary">
+      <span class="roster-summary-pill"><i class="ti ti-users"></i> 11 Players</span>
+      <span class="roster-summary-pill"><i class="ti ti-shirt-sport"></i> Jersey Numbers Confirmed</span>
+      <span class="roster-summary-pill"><i class="ti ti-photo"></i> assets/players/*.jpg</span>
+      <span class="roster-summary-pill"><i class="ti ti-id"></i> Player Profile Pages</span>
+    </div>
+
+    <div class="player-card-grid" data-roster-grid>
+      <div class="doc-item">
+        <div class="doc-icon"><i class="ti ti-loader-2"></i></div>
+        <div class="doc-info"><div class="doc-name">Loading roster</div><div class="doc-desc">Building Primetime player cards...</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand">★ Primetime Fastpitch</div>
+  <div class="footer-links">
+    <a href="../index.html#home">HOME</a>
+    <a href="../index.html#team-info">Team Info</a>
+    <a href="./">Roster</a>
+    <a href="../index.html#schedule">Schedule</a>
+    <a href="../index.html#ncs-tourn-tracker">NCS Tourn Tracker</a>
+    <a href="../index.html#fundraising">Fundraising</a>
+  </div>
+  <p>Texas &bull; Select Fastpitch Softball</p>
+</footer>
+
+<script src="../assets/js/roster.js"></script>
+</body>
+</html>
