@@ -44,6 +44,7 @@ async function loadRoster() {
   const response = await fetch(`${ROSTER_DATA_PATH}?v=${Date.now()}`, { cache: 'no-store' });
   const players = await response.json();
   root.replaceChildren(...players.map(buildPlayerCard));
+  window.dispatchEvent(new CustomEvent('primetime-roster-rendered'));
 }
 
 document.addEventListener('DOMContentLoaded', loadRoster);
