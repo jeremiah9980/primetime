@@ -95,17 +95,11 @@
   <!-- SCHEDULE -->
   <div class="section" id="schedule">
     <div class="section-label">Schedule</div>
-    <h2>Team Schedule</h2>
+    <h2>GameChanger Schedule</h2>
     <div class="section-rule"></div>
-    <div class="card-grid card-grid-2" style="gap:12px;">
-      <div class="doc-item">
-        <div class="doc-icon"><i class="ti ti-calendar-event"></i></div>
-        <div class="doc-info"><div class="doc-name">Upcoming Games</div><div class="doc-desc">Add GameChanger, practice, scrimmage, and tournament schedule items here.</div></div>
-      </div>
-      <div class="doc-item">
-        <div class="doc-icon"><i class="ti ti-map-pin"></i></div>
-        <div class="doc-info"><div class="doc-name">Locations</div><div class="doc-desc">Add field addresses, gate notes, parking details, and warmup instructions.</div></div>
-      </div>
+    <p>The Primetime schedule reads from the GameChanger team schedule source and renders synced games here.</p>
+    <div class="gc-schedule-panel" data-gamechanger-schedule data-gamechanger-url="https://web.gc.com/teams/560mQaj2c3aH/2026-spring-primetime-10u/schedule">
+      <div class="gc-schedule-loading"><i class="ti ti-loader-2"></i> Loading GameChanger schedule…</div>
     </div>
   </div>
 
@@ -157,5 +151,6 @@
   <p>Texas &bull; Select Fastpitch Softball</p>
   <p style="margin-top:4px;">Hard Work &bull; Dedication &bull; Discipline &bull; Passion &bull; Where Champions Are Made</p>
 </footer>
+<script src="assets/js/gamechanger-schedule.js"></script>
 </body>
 </html>
