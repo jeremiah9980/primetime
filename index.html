@@ -20,18 +20,18 @@
     <h1>Primetime Fastpitch</h1>
     <div class="hero-sub">Where Champions Are Made</div>
     <div class="hero-rule"></div>
-    <p class="hero-tagline">A clean team site for team information, roster visibility, schedule updates, GameChanger schedule, NCS tournament tracking, and fundraising.</p>
+    <p class="hero-tagline">A clean team site for team information, roster visibility, schedule updates, GameChanger schedule, NCS tournament scoring dashboards, and fundraising.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
       <a href="#team-info" class="btn-primary">Team Info <i class="ti ti-arrow-right"></i></a>
       <a href="roster/" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">Open Roster</a>
-      <a href="#ncs-tourn-tracker" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">NCS Tourn Tracker</a>
+      <a href="ncs-tracker/" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">NCS Dashboard</a>
     </div>
   </div>
 </section>
 
 <!-- GOLD STRIP -->
 <div class="gold-strip">
-  <p>HOME &nbsp;&bull;&nbsp; Team Info &nbsp;&bull;&nbsp; Roster &nbsp;&bull;&nbsp; Schedule &nbsp;&bull;&nbsp; NCS Tourn Tracker &nbsp;&bull;&nbsp; Fundraising</p>
+  <p>HOME &nbsp;&bull;&nbsp; Team Info &nbsp;&bull;&nbsp; Roster &nbsp;&bull;&nbsp; Schedule &nbsp;&bull;&nbsp; NCS Dashboard &nbsp;&bull;&nbsp; Fundraising</p>
 </div>
 
 <div class="page">
@@ -58,11 +58,11 @@
           <div style="font-size:14px;font-weight:600;color:var(--ink);">Team schedule source</div>
           <div style="font-size:12px;color:var(--g3);margin-top:2px;">Schedule is connected to Primetime's GameChanger team page.</div>
         </div>
-        <div style="background:var(--white);border:1px solid var(--g4);border-left:4px solid #1D9E75;border-radius:0 10px 10px 0;padding:14px 18px;">
-          <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:#0F766E;text-transform:uppercase;margin-bottom:3px;">NCS</div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);">Team ID 26-71355</div>
-          <div style="font-size:12px;color:var(--g3);margin-top:2px;">Past and upcoming NCS events are tracked in the NCS Tourn Tracker.</div>
-        </div>
+        <a href="ncs-tracker/" style="background:var(--white);border:1px solid var(--g4);border-left:4px solid #1D9E75;border-radius:0 10px 10px 0;padding:14px 18px;text-decoration:none;display:block;">
+          <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:#0F766E;text-transform:uppercase;margin-bottom:3px;">NCS Dashboard</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);">Tournament scoring tracker</div>
+          <div style="font-size:12px;color:var(--g3);margin-top:2px;">Track each tournament, scores, records, standings, and game-day status.</div>
+        </a>
       </div>
     </div>
   </div>
@@ -78,20 +78,20 @@
     </div>
   </div>
 
-  <!-- NCS TOURN TRACKER -->
-  <div class="section" id="ncs-tourn-tracker">
-    <div class="section-label">NCS Tourn Tracker</div>
-    <h2>NCS Past + Upcoming Events</h2>
+  <!-- NCS DASHBOARD -->
+  <div class="section" id="ncs-dashboard">
+    <div class="section-label">NCS Dashboard</div>
+    <h2>NCS Tournament Score Dashboard</h2>
     <div class="section-rule"></div>
-    <p>Primetime NCS tracker for Team ID 26-71355, including team summary, past event history, and upcoming event status.</p>
+    <p>Open the live Primetime NCS dashboard to track each tournament, game scores, records, standings, pool play, and bracket-day status.</p>
     <div class="ncs-panel" data-ncs-events>
       <div class="ncs-panel-head">
         <div>
-          <div class="section-label">NCS Team Source</div>
-          <h3>Primetime 10U · NCS Events</h3>
-          <p>Georgetown, TX · 10U C · Past and upcoming events sourced from the NCS team page.</p>
+          <div class="section-label">Live Tournament Command Center</div>
+          <h3>Primetime 10U · NCS Dashboard</h3>
+          <p>Use the dedicated dashboard for tournament scoring, next-game tracking, standings, and game-day status.</p>
         </div>
-        <a class="btn-primary" data-ncs-source href="https://www.playncs.com/Fastpitch/Teams/Details/71355/primetime-10u" target="_blank" rel="noopener noreferrer">Open NCS <i class="ti ti-external-link"></i></a>
+        <a class="btn-primary" href="ncs-tracker/">Open NCS Dashboard <i class="ti ti-arrow-right"></i></a>
       </div>
       <div class="ncs-metrics" data-ncs-metrics></div>
       <div class="ncs-event-columns">
@@ -131,7 +131,7 @@
     <a href="#team-info">Team Info</a>
     <a href="roster/">Roster</a>
     <a href="#schedule">Schedule</a>
-    <a href="#ncs-tourn-tracker">NCS Tourn Tracker</a>
+    <a href="ncs-tracker/">NCS Dashboard</a>
     <a href="#fundraising">Fundraising</a>
   </div>
   <p>Texas &bull; Select Fastpitch Softball</p>
