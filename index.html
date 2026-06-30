@@ -26,7 +26,7 @@
       <a href="#team-info" class="btn-primary">Team Info <i class="ti ti-arrow-right"></i></a>
       <a href="roster/" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">Open Roster</a>
       <a href="#social-media" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">Social Media</a>
-      <a href="ncs-tracker/" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">NCS Dashboard</a>
+      <a href="#ncs-dashboard" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--yellow);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;border:2px solid rgba(255,255,255,.4);text-decoration:none;">NCS Dashboard</a>
     </div>
   </div>
 </section>
@@ -60,7 +60,7 @@
           <div style="font-size:14px;font-weight:600;color:var(--ink);">Team schedule source</div>
           <div style="font-size:12px;color:var(--g3);margin-top:2px;">Schedule is connected to Primetime's GameChanger team page.</div>
         </div>
-        <a href="ncs-tracker/" style="background:var(--white);border:1px solid var(--g4);border-left:4px solid #1D9E75;border-radius:0 10px 10px 0;padding:14px 18px;text-decoration:none;display:block;">
+        <a href="#ncs-dashboard" style="background:var(--white);border:1px solid var(--g4);border-left:4px solid #1D9E75;border-radius:0 10px 10px 0;padding:14px 18px;text-decoration:none;display:block;">
           <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:#0F766E;text-transform:uppercase;margin-bottom:3px;">NCS Dashboard</div>
           <div style="font-size:14px;font-weight:600;color:var(--ink);">Tournament scoring tracker</div>
           <div style="font-size:12px;color:var(--g3);margin-top:2px;">Track each tournament, scores, records, standings, and game-day status.</div>
@@ -117,29 +117,22 @@
   <!-- NCS DASHBOARD -->
   <div class="section" id="ncs-dashboard">
     <div class="section-label">NCS Dashboard</div>
-    <h2>NCS Tournament Score Dashboard</h2>
+    <h2>NCS Tournament Dashboards</h2>
     <div class="section-rule"></div>
-    <p>Open the live Primetime NCS dashboard to track each tournament, game scores, records, standings, pool play, and bracket-day status.</p>
-    <div class="ncs-panel" data-ncs-events>
-      <div class="ncs-panel-head">
-        <div>
-          <div class="section-label">Live Tournament Command Center</div>
-          <h3>Primetime 10U · NCS Dashboard</h3>
-          <p>Use the dedicated dashboard for tournament scoring, next-game tracking, standings, and game-day status.</p>
-        </div>
-        <a class="btn-primary" href="ncs-tracker/">Open NCS Dashboard <i class="ti ti-arrow-right"></i></a>
-      </div>
-      <div class="ncs-metrics" data-ncs-metrics></div>
-      <div class="ncs-event-columns">
-        <div class="ncs-event-column">
-          <h4>Upcoming Events</h4>
-          <div class="ncs-event-list" data-ncs-upcoming></div>
-        </div>
-        <div class="ncs-event-column">
-          <h4>Past Events</h4>
-          <div class="ncs-event-list" data-ncs-past></div>
-        </div>
-      </div>
+    <p>Choose a dashboard to track Primetime's NCS tournament activity — live scoring, standings, pool play, bracket status, and roster monitoring.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;">
+      <a href="https://jeremiah9980.github.io/primetime/ncs-monitor/" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:var(--white);border:1px solid var(--g4);border-top:4px solid var(--yellow);border-radius:10px;padding:28px 24px;transition:box-shadow .15s;">
+        <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:8px;">Option 1</div>
+        <div style="font-family:var(--display);font-size:22px;font-weight:900;color:var(--ink);margin-bottom:8px;">Tournament-Tracker Dashboard</div>
+        <p style="font-size:14px;color:var(--g1);margin-bottom:18px;">Live tournament scoring, pool play standings, bracket-day status, records, and next-game tracking.</p>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--blue);">Open Dashboard <i class="ti ti-arrow-right"></i></span>
+      </a>
+      <a href="https://jeremiah9980.github.io/primetime/ncs-monitor/ncs-dashboard.html" target="_blank" rel="noopener" style="display:block;text-decoration:none;background:var(--white);border:1px solid var(--g4);border-top:4px solid #1D9E75;border-radius:10px;padding:28px 24px;transition:box-shadow .15s;">
+        <div style="font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:2px;color:#0F766E;text-transform:uppercase;margin-bottom:8px;">Option 2</div>
+        <div style="font-family:var(--display);font-size:22px;font-weight:900;color:var(--ink);margin-bottom:8px;">NCS-Roster Monitor</div>
+        <p style="font-size:14px;color:var(--g1);margin-bottom:18px;">Monitor roster participation, player eligibility, and NCS registration status across tournaments.</p>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#0F766E;">Open Monitor <i class="ti ti-arrow-right"></i></span>
+      </a>
     </div>
   </div>
 
@@ -168,7 +161,7 @@
     <a href="roster/">Roster</a>
     <a href="#social-media">Social Media</a>
     <a href="#schedule">Schedule</a>
-    <a href="ncs-tracker/">NCS Dashboard</a>
+    <a href="#ncs-dashboard">NCS Dashboard</a>
     <a href="#fundraising">Fundraising</a>
   </div>
   <p>Texas &bull; Select Fastpitch Softball</p>
