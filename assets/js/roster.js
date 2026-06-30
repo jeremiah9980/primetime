@@ -24,12 +24,12 @@ function buildPlayerCard(player) {
   const statTiles = hasStats ? `
     <div class="player-stat-label">Season 2026 Batting</div>
     <div class="player-stat-grid">
-      <div class="player-stat"><strong>${s.AVG}</strong><span>AVG</span></div>
-      <div class="player-stat"><strong>${s.OBP}</strong><span>OBP</span></div>
-      <div class="player-stat"><strong>${s.OPS}</strong><span>OPS</span></div>
-      <div class="player-stat"><strong>${s.SB}</strong><span>SB</span></div>
+      <div class="player-stat"><strong>${s.AVG ?? '—'}</strong><span>AVG</span></div>
+      <div class="player-stat"><strong>${s.OBP ?? '—'}</strong><span>OBP</span></div>
+      <div class="player-stat"><strong>${s.OPS ?? '—'}</strong><span>OPS</span></div>
+      <div class="player-stat"><strong>${s.SB ?? '—'}</strong><span>SB</span></div>
     </div>
-    <p class="player-note">${s.GP} GP &bull; ${s.H} H &bull; ${s.RBI} RBI &bull; ${s.R} R</p>` : '';
+    <p class="player-note">${s.GP ?? '—'} GP &bull; ${s.H ?? '—'} H &bull; ${s.RBI ?? '—'} RBI &bull; ${s.R ?? '—'} R</p>` : '';
 
   card.innerHTML = `
     <div class="player-photo">
