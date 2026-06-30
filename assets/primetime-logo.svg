@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" role="img" aria-labelledby="title desc">
+  <title id="title">Primetime Fastpitch Logo</title>
+  <desc id="desc">Black, gold, and white Primetime Fastpitch star and softball logo.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6c2"/>
+      <stop offset=".36" stop-color="#f7c845"/>
+      <stop offset=".7" stop-color="#d49b12"/>
+      <stop offset="1" stop-color="#7b5200"/>
+    </linearGradient>
+    <linearGradient id="white" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d9d9d9"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".45"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#d4a017" flood-opacity=".38"/>
+    </filter>
+    <radialGradient id="ball" cx="42%" cy="34%" r="64%">
+      <stop offset="0" stop-color="#fff7a8"/>
+      <stop offset=".45" stop-color="#ffd33d"/>
+      <stop offset="1" stop-color="#c47f00"/>
+    </radialGradient>
+  </defs>
+  <rect width="820" height="520" fill="none"/>
+  <g opacity=".86">
+    <path d="M100 246c80-104 206-154 374-148 116 4 205 38 270 92-76-26-157-32-243-18-165 27-292 94-401 74Z" fill="#d4a017" opacity=".32"/>
+    <path d="M725 142c-8 54-33 91-78 112 77-5 129-36 151-97-28 16-53 10-73-15Z" fill="#ffb524" opacity=".46"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="445" cy="163" r="88" fill="url(#ball)" stroke="#1a1a1a" stroke-width="8"/>
+    <path d="M396 94c27 35 28 93 0 135M497 94c-27 35-28 93 0 135" fill="none" stroke="#9d3100" stroke-width="7" stroke-dasharray="13 11" opacity=".78"/>
+    <path d="M251 56 333 178 498 119 438 253 595 345 418 361 356 496 290 363 111 348 268 252Z" fill="#080808" stroke="#f2d373" stroke-width="18"/>
+    <path d="M251 56 333 178 498 119 438 253 595 345 418 361 356 496 290 363 111 348 268 252Z" fill="none" stroke="#050505" stroke-width="7"/>
+    <path d="M149 249 221 183 683 167 611 244Z" fill="#111" stroke="url(#gold)" stroke-width="10"/>
+    <path d="M161 259 697 176 629 255 113 342Z" fill="#0a0a0a" stroke="#ffffff" stroke-width="4" opacity=".9"/>
+    <text x="162" y="286" font-family="Impact, Anton, Arial Black, sans-serif" font-size="104" font-style="italic" font-weight="900" fill="url(#gold)" stroke="#101010" stroke-width="10" paint-order="stroke" transform="skewX(-11)">PRIMETIME</text>
+    <text x="162" y="286" font-family="Impact, Anton, Arial Black, sans-serif" font-size="104" font-style="italic" font-weight="900" fill="url(#gold)" stroke="#ffffff" stroke-width="2" paint-order="stroke" transform="skewX(-11)">PRIMETIME</text>
+    <rect x="258" y="310" width="337" height="68" rx="8" fill="#111" stroke="url(#gold)" stroke-width="7"/>
+    <text x="426" y="359" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="44" font-weight="900" fill="url(#white)" letter-spacing="2">FASTPITCH</text>
+  </g>
+</svg>
