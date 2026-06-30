@@ -35,18 +35,27 @@ function setActiveAnchor() {
   });
 }
 
-function loadPlayerImageData() {
-  if (document.querySelector('script[data-primetime-player-images]')) return;
+function loadScriptOnce(src, datasetKey) {
+  if (document.querySelector(`script[data-${datasetKey}]`)) return;
   const script = document.createElement('script');
-  script.src = `${assetPrefix}assets/js/player-image-data.js`;
+  script.src = src;
   script.defer = true;
-  script.dataset.primetimePlayerImages = 'true';
+  script.dataset[datasetKey.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())] = 'true';
   document.head.appendChild(script);
+}
+
+function loadPlayerImageData() {
+  loadScriptOnce(`${assetPrefix}assets/js/player-image-data.js`, 'primetime-player-images');
+}
+
+function loadPrimetimeLogo() {
+  loadScriptOnce(`${assetPrefix}assets/js/primetime-logo.js`, 'primetime-logo');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
   setActiveAnchor();
   loadPlayerImageData();
+  loadPrimetimeLogo();
   window.addEventListener('hashchange', setActiveAnchor);
 });
