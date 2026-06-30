@@ -19,12 +19,17 @@ function buildPlayerCard(player) {
     : `../players/${player.slug}.html`;
 
   const s = player.stats || {};
-  const statCells = [
-    { label: 'AVG', value: s.AVG || '—' },
-    { label: 'HR',  value: s.HR  !== undefined ? s.HR  : '—' },
-    { label: 'RBI', value: s.RBI !== undefined ? s.RBI : '—' },
-    { label: 'SB',  value: s.SB  !== undefined ? s.SB  : '—' },
-  ];
+  const hasStats = s.AVG !== undefined;
+
+  const statTiles = hasStats ? `
+    <div class="player-stat-label">Season 2026 Batting</div>
+    <div class="player-stat-grid">
+      <div class="player-stat"><strong>${s.AVG}</strong><span>AVG</span></div>
+      <div class="player-stat"><strong>${s.OBP}</strong><span>OBP</span></div>
+      <div class="player-stat"><strong>${s.OPS}</strong><span>OPS</span></div>
+      <div class="player-stat"><strong>${s.SB}</strong><span>SB</span></div>
+    </div>
+    <p class="player-note">${s.GP} GP &bull; ${s.H} H &bull; ${s.RBI} RBI &bull; ${s.R} R</p>` : '';
 
   card.innerHTML = `
     <div class="player-photo">
@@ -36,10 +41,8 @@ function buildPlayerCard(player) {
     </div>
     <div class="player-body">
       <h3 class="player-name">${player.name}</h3>
-      <div class="player-stat-label">Season Stats</div>
-      <div class="player-stat-grid">
-        ${statCells.map(c => `<div class="player-stat"><strong>${c.value}</strong><span>${c.label}</span></div>`).join('')}
-      </div>
+      <div class="player-status"><span class="status-dot"></span> Active Roster</div>
+      ${statTiles}
       <div class="player-divider" style="margin-top:16px;"></div>
       <a href="${profilePath}" class="player-profile-link"><i class="ti ti-id"></i> View Player Profile</a>
     </div>`;

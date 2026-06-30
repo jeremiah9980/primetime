@@ -28,13 +28,23 @@ function buildHero(player) {
 
 function buildPhotoCard(player) {
   const card = profileEl('article', 'profile-photo-card');
+  const imgSrc = `../assets/players/${player.image}`;
   card.innerHTML = `
     <span class="profile-photo-watermark">${player.number}</span>
+    <img src="${imgSrc}" alt="${player.name}" class="profile-photo-img" loading="lazy"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
     <i class="ti ti-user-circle"></i>
     <div class="profile-photo-label">
       <strong>Player Image Coming Soon</strong>
       <span class="profile-number-badge">#${player.number}</span>
     </div>`;
+  const img = card.querySelector('img.profile-photo-img');
+  img.addEventListener('load', () => {
+    card.classList.add('has-player-image');
+    card.querySelector('i').style.display = 'none';
+    card.querySelector('.profile-photo-label strong').style.display = 'none';
+  });
+  img.addEventListener('error', () => img.remove());
   return card;
 }
 
@@ -43,7 +53,7 @@ function buildSnapshotPanel(player) {
   const panel = profileEl('article', 'profile-panel');
   const label = profileEl('div', 'profile-section-label', `${player.name.split(' ')[0]} · Player Profile`);
   const h2 = profileEl('h2', '', 'GameChanger Snapshot');
-  const p = profileEl('p', '', `Season stats from GameChanger — ${stats.GP || '—'} games played.`);
+  const p = profileEl('p', '', `Primetime Fastpitch 10U · Spring/Summer 2026 — ${stats.GP || '—'} games played.`);
   const grid = profileEl('div', 'stat-grid');
 
   CURRENT_FIELDS.forEach(field => {
