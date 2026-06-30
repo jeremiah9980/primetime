@@ -39,11 +39,11 @@ function buildPhotoCard(player) {
 }
 
 function buildSnapshotPanel(player) {
-  const stats = player.currentStats || placeholderStats(CURRENT_FIELDS);
+  const stats = player.stats || placeholderStats(CURRENT_FIELDS);
   const panel = profileEl('article', 'profile-panel');
   const label = profileEl('div', 'profile-section-label', `${player.name.split(' ')[0]} · Player Profile`);
   const h2 = profileEl('h2', '', 'GameChanger Snapshot');
-  const p = profileEl('p', '', 'Current in-season GameChanger snapshot fields are ready for verified stats once available.');
+  const p = profileEl('p', '', `Season stats from GameChanger — ${stats.GP || '—'} games played.`);
   const grid = profileEl('div', 'stat-grid');
 
   CURRENT_FIELDS.forEach(field => {
@@ -78,7 +78,7 @@ function buildCharacter(player) {
 }
 
 function buildAllTimeStats(player) {
-  const stats = player.allTimeStats || placeholderStats(ALL_TIME_FIELDS);
+  const stats = player.stats || placeholderStats(ALL_TIME_FIELDS);
   const block = profileEl('section', 'profile-block');
   const inner = profileEl('div', 'profile-block-inner');
   const table = profileEl('table', 'stats-table');

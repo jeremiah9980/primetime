@@ -1,13 +1,123 @@
 [
-  { "number": "5", "name": "Kylie Collins", "slug": "kylie-collins", "image": "kylie-c.jpg" },
-  { "number": "7", "name": "Zoey Arabella Vela", "slug": "zoey-arabella-vela", "image": "zoey-v.jpg" },
-  { "number": "10", "name": "Khloe Lazo", "slug": "khloe-lazo", "image": "khloe-l.jpg" },
-  { "number": "12", "name": "Jordynn Wright", "slug": "jordynn-wright", "image": "jordynn-w.jpg" },
-  { "number": "13", "name": "Araceli Sophia Noveron", "slug": "araceli-sophia-noveron", "image": "araceli-n.jpg" },
-  { "number": "15", "name": "Lyla Terrazas", "slug": "lyla-terrazas", "image": "lyla-t.jpg" },
-  { "number": "17", "name": "Elena Alejandra Grimaldo", "slug": "elena-alejandra-grimaldo", "image": "elena-g.jpg" },
-  { "number": "24", "name": "Ella Gamble", "slug": "ella-gamble", "image": "ella-g.jpg" },
-  { "number": "27", "name": "Romina Alexandra Trevino", "slug": "romina-alexandra-trevino", "image": "romina-t.jpg" },
-  { "number": "30", "name": "Sophia Texas Hill", "slug": "sophia-texas-hill", "image": "sophia-h.jpg" },
-  { "number": "42", "name": "Zeriyah Campos", "slug": "zeriyah-campos", "image": "zeriyah-c.jpg" }
+  {
+    "number": "5",
+    "name": "Kylie Collins",
+    "slug": "kylie-collins",
+    "image": "kylie-c.png",
+    "stats": {
+      "GP": 69, "PA": 108, "AB": 80, "AVG": ".425", "OBP": ".565", "SLG": ".688", "OPS": "1.252",
+      "H": 34, "1B": 21, "2B": 8, "3B": 2, "HR": 3, "RBI": 30, "R": 43, "BB": 25, "SO": 15, "HBP": 2,
+      "SB": 47, "SB%": "92.2", "CS": 4
+    }
+  },
+  {
+    "number": "7",
+    "name": "Zoey Arabella Vela",
+    "slug": "zoey-arabella-vela",
+    "image": "zoey-v.jpg",
+    "stats": {
+      "GP": 41, "PA": 56, "AB": 36, "AVG": ".528", "OBP": ".696", "SLG": "1.000", "OPS": "1.696",
+      "H": 19, "1B": 9, "2B": 6, "3B": 1, "HR": 3, "RBI": 21, "R": 24, "BB": 18, "SO": 9, "HBP": 2,
+      "SB": 20, "SB%": "95.2", "CS": 1
+    }
+  },
+  {
+    "number": "10",
+    "name": "Khloe Lazo",
+    "slug": "khloe-lazo",
+    "image": "khloe-l.jpg",
+    "stats": {
+      "GP": 69, "PA": 135, "AB": 105, "AVG": ".476", "OBP": ".590", "SLG": ".648", "OPS": "1.237",
+      "H": 50, "1B": 40, "2B": 5, "3B": 2, "HR": 3, "RBI": 23, "R": 58, "BB": 28, "SO": 16, "HBP": 1,
+      "SB": 42, "SB%": "95.5", "CS": 2
+    }
+  },
+  {
+    "number": "12",
+    "name": "Jordynn Wright",
+    "slug": "jordynn-wright",
+    "image": "jordynn-w.jpg",
+    "stats": {
+      "GP": 63, "PA": 123, "AB": 96, "AVG": ".365", "OBP": ".496", "SLG": ".490", "OPS": ".986",
+      "H": 35, "1B": 28, "2B": 2, "3B": 5, "HR": 0, "RBI": 22, "R": 50, "BB": 24, "SO": 18, "HBP": 2,
+      "SB": 37, "SB%": "94.9", "CS": 2
+    }
+  },
+  {
+    "number": "13",
+    "name": "Araceli Sophia Noveron",
+    "slug": "araceli-sophia-noveron",
+    "image": "araceli-n.jpg",
+    "stats": {
+      "GP": 63, "PA": 90, "AB": 65, "AVG": ".154", "OBP": ".389", "SLG": ".169", "OPS": ".558",
+      "H": 10, "1B": 9, "2B": 1, "3B": 0, "HR": 0, "RBI": 4, "R": 24, "BB": 24, "SO": 31, "HBP": 1,
+      "SB": 20, "SB%": "100.0", "CS": 3
+    }
+  },
+  {
+    "number": "15",
+    "name": "Lyla Terrazas",
+    "slug": "lyla-terrazas",
+    "image": "lyla-t.jpg",
+    "stats": {
+      "GP": 65, "PA": 122, "AB": 94, "AVG": ".340", "OBP": ".492", "SLG": ".617", "OPS": "1.109",
+      "H": 32, "1B": 16, "2B": 8, "3B": 6, "HR": 2, "RBI": 32, "R": 35, "BB": 26, "SO": 37, "HBP": 2,
+      "SB": 20, "SB%": "95.2", "CS": 1
+    }
+  },
+  {
+    "number": "17",
+    "name": "Elena Alejandra Grimaldo",
+    "slug": "elena-alejandra-grimaldo",
+    "image": "elena-g.jpg",
+    "stats": {
+      "GP": 28, "PA": 44, "AB": 29, "AVG": ".310", "OBP": ".545", "SLG": ".586", "OPS": "1.132",
+      "H": 9, "1B": 4, "2B": 3, "3B": 1, "HR": 1, "RBI": 14, "R": 12, "BB": 10, "SO": 11, "HBP": 5,
+      "SB": 12, "SB%": "85.7", "CS": 2
+    }
+  },
+  {
+    "number": "24",
+    "name": "Ella Gamble",
+    "slug": "ella-gamble",
+    "image": "ella-g.jpg",
+    "stats": {
+      "GP": 36, "PA": 41, "AB": 33, "AVG": ".273", "OBP": ".415", "SLG": ".303", "OPS": ".718",
+      "H": 9, "1B": 8, "2B": 1, "3B": 0, "HR": 0, "RBI": 9, "R": 10, "BB": 8, "SO": 11, "HBP": 3,
+      "SB": 9, "SB%": "90.0", "CS": 1
+    }
+  },
+  {
+    "number": "27",
+    "name": "Romina Alexandra Trevino",
+    "slug": "romina-alexandra-trevino",
+    "image": "romina-t.jpg",
+    "stats": {
+      "GP": 38, "PA": 59, "AB": 52, "AVG": ".365", "OBP": ".441", "SLG": ".558", "OPS": ".998",
+      "H": 19, "1B": 11, "2B": 6, "3B": 2, "HR": 0, "RBI": 16, "R": 12, "BB": 7, "SO": 7, "HBP": 0,
+      "SB": 6, "SB%": "75.0", "CS": 2
+    }
+  },
+  {
+    "number": "30",
+    "name": "Sophia Texas Hill",
+    "slug": "sophia-texas-hill",
+    "image": "sophia-h.jpg",
+    "stats": {
+      "GP": 55, "PA": 85, "AB": 71, "AVG": ".338", "OBP": ".440", "SLG": ".606", "OPS": "1.046",
+      "H": 24, "1B": 12, "2B": 7, "3B": 3, "HR": 2, "RBI": 26, "R": 23, "BB": 12, "SO": 29, "HBP": 4,
+      "SB": 11, "SB%": "68.8", "CS": 5
+    }
+  },
+  {
+    "number": "42",
+    "name": "Zeriyah Campos",
+    "slug": "zeriyah-campos",
+    "image": "zee.jpg",
+    "stats": {
+      "GP": 69, "PA": 121, "AB": 91, "AVG": ".407", "OBP": ".554", "SLG": ".736", "OPS": "1.290",
+      "H": 37, "1B": 21, "2B": 7, "3B": 4, "HR": 5, "RBI": 47, "R": 36, "BB": 25, "SO": 29, "HBP": 5,
+      "SB": 26, "SB%": "83.9", "CS": 5
+    }
+  }
 ]
