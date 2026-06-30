@@ -1,7 +1,7 @@
 window.PRIMETIME_PLAYER_IMAGE_BASE = window.location.pathname.includes('/players/') || window.location.pathname.includes('/roster/') ? '../assets/players/' : 'assets/players/';
 
 window.PRIMETIME_PLAYER_IMAGES = window.PRIMETIME_PLAYER_IMAGES || {
-  'kylie-collins': 'kylie-c.jpg',
+  'kylie-collins': 'kylie-c.png',
   'zoey-arabella-vela': 'zoey-v.jpg',
   'khloe-lazo': 'khloe-l.jpg',
   'jordynn-wright': 'jordynn-w.jpg',
@@ -11,7 +11,7 @@ window.PRIMETIME_PLAYER_IMAGES = window.PRIMETIME_PLAYER_IMAGES || {
   'ella-gamble': 'ella-g.jpg',
   'romina-alexandra-trevino': 'romina-t.jpg',
   'sophia-texas-hill': 'sophia-h.jpg',
-  'zeriyah-campos': 'zeriyah-c.jpg'
+  'zeriyah-campos': 'zee.jpg'
 };
 
 (function primePlayerImages() {
