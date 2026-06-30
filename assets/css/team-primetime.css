@@ -1,331 +1,58 @@
+/* Primetime team roster cover styles */
 
-/* ===== PRIMETIME FASTPITCH SKIN — black + gold over the shared design system ===== */
-body.primetime-page {
-  --blue:     #C8920A;
-  --blue2:    #A07800;
-  --blue-l:   #FFF8E6;
-  --blue-m:   #FFE08A;
-  --yellow:   #D4A017;
-  --yellow2:  #B88A00;
-  --yellow-l: #FFF8E6;
-  --yellow-m: #FFE08A;
-  --stripe: repeating-linear-gradient(90deg, rgba(212,160,23,.18) 0px, rgba(212,160,23,.18) 6px, transparent 6px, transparent 28px);
-  background: #080808;
-}
-
-.primetime-page nav { background: #0a0a0a; border-bottom-color: var(--yellow); }
-.primetime-page .nav-brand { color: #fff; }
-.primetime-page .nav-brand span { color: #9a8050; }
-.primetime-page .nav-brand img { border-color: var(--yellow); }
-.primetime-page .nav-links a { color: rgba(255,255,255,.62); }
-.primetime-page .nav-links a:hover,
-.primetime-page .nav-links a.active { color: var(--yellow); background: rgba(212,160,23,.15); }
-.primetime-page .nav-links a[href*="fundraising"] { color: #0a0a0a; background: var(--yellow); border: 1px solid var(--yellow2); }
-.primetime-page .nav-links a[href*="fundraising"]:hover { background: #fff; color: var(--blue2); }
-
-.primetime-page .hero {
-  background:
-    radial-gradient(circle at 78% 18%, rgba(212,160,23,.20), transparent 30%),
-    radial-gradient(circle at 16% 70%, rgba(212,160,23,.10), transparent 34%),
-    linear-gradient(135deg, #060608 0%, #111114 55%, #07070A 100%);
-  border-bottom: 3px solid var(--yellow);
-}
-.primetime-page .hero h1 { color: #fff; text-shadow: 0 0 40px rgba(212,160,23,.55); }
-.primetime-page .hero-kicker { color: var(--yellow); }
-.primetime-page .hero-sub { color: rgba(255,255,255,.82); }
-.primetime-page .hero-logo {
-  width: 130px; height: 130px; object-fit: contain;
-  margin: 0 auto 14px; display: block;
-  filter: drop-shadow(0 8px 26px rgba(212,160,23,.35));
-}
-.primetime-page .hero-rule { background: var(--yellow); }
-
-.primetime-page .page { background: #F9F7F2; border-radius: 20px 20px 0 0; margin-top: 0; padding-top: 8px; }
-.primetime-page .gold-strip { background: var(--yellow); border-bottom-color: var(--yellow2); }
-.primetime-page .gold-strip p { color: #080808; }
-
-.primetime-page .section-label { color: var(--blue); }
-.primetime-page .card h3 { color: var(--blue); }
-.primetime-page .card-gold { border-top-color: var(--yellow); }
-.primetime-page .card-blue { border-top-color: var(--blue); }
-
-.primetime-page .callout {
-  border-left-color: var(--yellow);
-  background: var(--yellow-l);
+/* Hero section for the roster page using the cover image */
+.primetime-page .roster-cover-hero {
+  background-image: url('../images/roster-cover.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 720px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* Use a yellow border on the bottom edge to match Primetime colors */
+  border-bottom: 4px solid var(--yellow, #d4a017);
 }
 
-.primetime-page .doc-item:hover {
-  border-color: var(--yellow);
-  box-shadow: 0 0 0 3px rgba(212,160,23,.18);
-}
-.primetime-page .doc-icon {
-  background: var(--yellow-m);
-  border-color: var(--yellow);
-  color: var(--blue2);
-}
-
-.primetime-page .btn-primary {
-  background: var(--yellow);
-  color: #080808;
-}
-.primetime-page .btn-primary:hover { background: var(--yellow2); }
-.primetime-page .btn-outline { border-color: var(--blue); color: var(--blue); }
-.primetime-page .btn-outline:hover { background: var(--blue); color: #fff; }
-
-.primetime-page .vote-table th {
-  background: #1a1a1a;
-  color: var(--yellow);
-  border-color: #333;
-}
-.primetime-page .vote-table tr:hover td { background: var(--blue-l); }
-
-.primetime-page .badge-gold {
-  background: var(--yellow-m);
-  color: var(--blue2);
-  border: 1px solid var(--yellow);
-}
-.primetime-page .badge-blue {
-  background: var(--blue-l);
-  color: var(--blue2);
-}
-.primetime-page .avatar.av-gold {
-  background: var(--yellow-m);
-  color: var(--blue2);
-  border-color: var(--yellow);
-}
-.primetime-page .avatar.av-blue {
-  background: var(--blue-l);
-  color: var(--blue2);
-  border-color: var(--blue-m);
+.primetime-page .roster-cover-overlay {
+  width: 100%;
+  min-height: 720px;
+  /* Dark gradient overlay for readability */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.20) 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    rgba(0, 0, 0, 0.70) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
-/* ===== PLAYER CARD ROSTER LOOK — PRIMETIME BLACK + GOLD ===== */
-.primetime-page #roster {
-  background:
-    radial-gradient(circle at 10% 0%, rgba(212,160,23,.14), transparent 30%),
-    radial-gradient(circle at 90% 12%, rgba(212,160,23,.09), transparent 26%),
-    linear-gradient(180deg, #080808 0%, #101010 45%, #050505 100%);
-  border-radius: 22px;
-  margin: 30px 0;
-  padding: 38px 26px;
-  border: 1px solid rgba(212,160,23,.30);
-  box-shadow: 0 28px 70px -42px #000;
-}
-.primetime-page #roster .section-label,
-.primetime-page #roster h2,
-.primetime-page #roster p { color: #f7f0df; }
-.primetime-page #roster .section-label { color: var(--yellow); }
-.primetime-page #roster .section-rule { background: var(--yellow); }
-.primetime-page .roster-summary {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin: 18px 0 24px;
-}
-.primetime-page .roster-summary-pill {
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding: 9px 14px;
-  border-radius:999px;
-  background:#fff8e6;
-  color:#1a1a1a;
-  font-family:var(--display);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:1.1px;
-  text-transform:uppercase;
-  border:1px solid rgba(212,160,23,.55);
-}
-.primetime-page .roster-summary-pill i { color: var(--yellow2); }
-.primetime-page .status-dot {
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:var(--yellow);
-  box-shadow:0 0 0 4px rgba(212,160,23,.15);
-}
-.primetime-page .player-card-grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:26px;
-}
-.primetime-page .player-card {
-  position:relative;
-  overflow:hidden;
-  border-radius:9px;
-  background:linear-gradient(180deg,#171717 0%,#0f0f0f 45%,#080808 100%);
-  border:1px solid rgba(212,160,23,.32);
-  box-shadow:0 22px 48px -34px #000;
-}
-.primetime-page .player-card:before {
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:88px;
-  height:5px;
-  background:linear-gradient(90deg,#ffffff,var(--yellow));
-  z-index:2;
-}
-.primetime-page .player-photo {
-  position:relative;
-  height:176px;
-  overflow:hidden;
-  background:
-    linear-gradient(135deg,rgba(212,160,23,.20),transparent 34%),
-    radial-gradient(circle at 68% 28%,rgba(212,160,23,.18),transparent 28%),
-    linear-gradient(145deg,#050505,#202020 62%,#090909);
-  display:grid;
-  place-items:center;
-}
-.primetime-page .player-photo:after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.72));
-}
-.primetime-page .player-photo i {
-  position:relative;
-  z-index:1;
-  font-size:58px;
-  color:#f5e4b1;
-  opacity:.72;
-}
-.primetime-page .player-watermark {
-  position:absolute;
-  right:14px;
-  bottom:4px;
-  color:rgba(212,160,23,.10);
-  font-family:Georgia,serif;
-  font-size:78px;
-  font-weight:900;
-  line-height:1;
-}
-.primetime-page .jersey-badge {
-  position:absolute;
-  left:18px;
-  bottom:16px;
-  z-index:3;
-  display:grid;
-  place-items:center;
-  min-width:56px;
-  height:56px;
-  padding:0 10px;
-  border-radius:999px;
-  background:linear-gradient(145deg,#0b0b0b,#222222);
-  color:#fff;
-  border:3px solid var(--yellow);
-  font-family:var(--display);
-  font-size:18px;
-  font-weight:950;
-  box-shadow:0 10px 24px -18px #000;
-}
-.primetime-page .player-body {
-  padding:22px 22px 24px;
-}
-.primetime-page .player-name {
-  margin:0 0 12px;
-  color:#fff !important;
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:27px;
-  line-height:1.02;
-  letter-spacing:-.75px;
-}
-.primetime-page .player-status {
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:18px;
-  padding:8px 13px;
-  border-radius:999px;
-  border:1px solid rgba(212,160,23,.38);
-  background:rgba(212,160,23,.11);
-  color:var(--yellow);
-  font-family:var(--display);
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.35px;
-  text-transform:uppercase;
-}
-.primetime-page .player-divider {
-  height:1px;
-  background:rgba(212,160,23,.26);
-  margin:0 0 17px;
-}
-.primetime-page .player-stat-label {
-  margin-bottom:10px;
-  color:var(--yellow2);
-  font-family:var(--display);
-  font-size:10px;
-  font-weight:950;
-  letter-spacing:1.7px;
-  text-transform:uppercase;
-}
-.primetime-page .player-stat-grid {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:9px;
-}
-.primetime-page .player-stat {
-  border:1px solid rgba(212,160,23,.25);
-  border-radius:7px;
-  background:rgba(255,248,230,.06);
-  padding:9px 6px 8px;
-  text-align:center;
-}
-.primetime-page .player-stat strong {
-  display:block;
-  color:var(--yellow);
-  font-family:var(--display);
-  font-size:18px;
-  font-weight:950;
-  line-height:1;
-  text-shadow:0 0 18px rgba(212,160,23,.30);
-}
-.primetime-page .player-stat span {
-  display:block;
-  margin-top:6px;
-  color:#fff8e6;
-  font-size:8px;
-  font-weight:850;
-  letter-spacing:.9px;
-  text-transform:uppercase;
-  opacity:.82;
-}
-.primetime-page .player-note {
-  margin:13px 0 0 !important;
-  color:#f7f0df !important;
-  font-size:12px;
-  line-height:1.45;
-}
-.primetime-page .player-profile-link {
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  margin-top:16px;
-  color:var(--yellow);
-  text-decoration:none;
-  font-family:var(--display);
-  font-size:11px;
-  font-weight:950;
-  letter-spacing:1.05px;
-  text-transform:uppercase;
-}
-.primetime-page .player-profile-link:hover { color:#fff; }
-
-@media(max-width:960px){
-  .primetime-page .player-card-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-}
-@media(max-width:620px){
-  .primetime-page #roster{padding:30px 16px;}
-  .primetime-page .player-card-grid{grid-template-columns:1fr;}
-  .primetime-page .player-photo{height:164px;}
+.primetime-page .roster-cover-hero .hero-inner {
+  text-align: center;
+  max-width: 900px;
+  color: #fff;
 }
 
-.primetime-page footer { background: #0a0a0a; border-top: 4px solid var(--yellow); }
-.primetime-page .footer-brand { color: var(--yellow); text-shadow: 2px 2px 0 rgba(0,0,0,.35); }
-.primetime-page footer p { color: rgba(255,255,255,.5); }
-.primetime-page .footer-links a { color: rgba(255,255,255,.45); }
-.primetime-page .footer-links a:hover { color: var(--yellow); }
+.primetime-page .roster-cover-hero .hero-kicker,
+.primetime-page .roster-cover-hero .hero-sub,
+.primetime-page .roster-cover-hero .hero-tagline,
+.primetime-page .roster-cover-hero h1 {
+  color: #fff;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.65);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+  .primetime-page .roster-cover-hero,
+  .primetime-page .roster-cover-overlay {
+    min-height: 520px;
+  }
+
+  .primetime-page .roster-cover-hero {
+    background-position: center center;
+  }
+}
