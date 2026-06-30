@@ -31,8 +31,7 @@ function buildPhotoCard(player) {
   const imgSrc = `../assets/players/${player.image}`;
   card.innerHTML = `
     <span class="profile-photo-watermark">${player.number}</span>
-    <img src="${imgSrc}" alt="${player.name}" class="profile-photo-img" loading="lazy"
-         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+    <img src="${imgSrc}" alt="${player.name}" class="profile-photo-img" loading="lazy">
     <i class="ti ti-user-circle"></i>
     <div class="profile-photo-label">
       <strong>Player Image Coming Soon</strong>
