@@ -56,10 +56,21 @@ function buildPlayerCard(player) {
 async function loadRoster() {
   const root = document.querySelector('[data-roster-grid]');
   if (!root) return;
-  const response = await fetch(`${ROSTER_DATA_PATH}?v=${Date.now()}`, { cache: 'no-store' });
-  const players = await response.json();
-  root.replaceChildren(...players.map(buildPlayerCard));
-  window.dispatchEvent(new CustomEvent('primetime-roster-rendered'));
+  try {
+    const response = await fetch(`${ROSTER_DATA_PATH}?v=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const players = await response.json();
+    root.replaceChildren(...players.map(buildPlayerCard));
+    window.dispatchEvent(new CustomEvent('primetime-roster-rendered'));
+  } catch (err) {
+    root.innerHTML = `<div class="doc-item">
+      <div class="doc-icon"><i class="ti ti-alert-circle"></i></div>
+      <div class="doc-info">
+        <div class="doc-name">Could not load roster</div>
+        <div class="doc-desc">${err.message || 'Unknown error'}</div>
+      </div>
+    </div>`;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', loadRoster);
