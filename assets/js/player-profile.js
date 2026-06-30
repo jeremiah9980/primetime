@@ -2,6 +2,8 @@ const PROFILE_DATA_PATH = '../assets/data/primetime-players.json';
 
 const CURRENT_FIELDS = ['AVG', 'OBP', 'SLG', 'OPS', 'H', 'RBI', 'SB', 'SB%'];
 const ALL_TIME_FIELDS = ['GP', 'PA', 'AB', 'AVG', 'OBP', 'SLG', 'OPS', 'H', '1B', '2B', '3B', 'HR', 'RBI', 'R', 'BB', 'SO', 'HBP', 'SB', 'SB%', 'CS'];
+const PITCHING_SNAP_FIELDS = ['ERA', 'WHIP', 'SO', 'W'];
+const PITCHING_ALL_FIELDS = ['IP', 'GP', 'GS', 'BF', 'Pitches', 'W', 'L', 'SV', 'H', 'R', 'ER', 'BB', 'SO', 'HBP', 'ERA', 'WHIP', 'BAA'];
 const CLIP_TAGS = ['GAME CLIP', 'HITS', 'DEFENSE', 'TOP PLAY', 'GAME CLIP', 'HOME RUN', 'TOP PLAY', 'GAME CLIP'];
 
 function profileEl(tag, className, text) {
@@ -17,10 +19,12 @@ function placeholderStats(fields) {
 
 function buildHero(player) {
   const hero = profileEl('section', 'profile-hero');
+  const roles = ['Rostered Athlete'];
+  if (player.pitching) roles.push('Pitcher');
   hero.innerHTML = `
     <div class="profile-kicker">Primetime Fastpitch · Central Texas · 2026</div>
     <h1><span>#${player.number}</span> ${player.name}</h1>
-    <div class="profile-role">Rostered Athlete</div>
+    <div class="profile-role">${roles.join(' · ')}</div>
     <div class="profile-hero-rule"></div>
     <p>${player.name}'s player profile, current GameChanger snapshot, character profile, all-time stats, and highlight clip wall are shown below.</p>`;
   return hero;
@@ -31,7 +35,8 @@ function buildPhotoCard(player) {
   const imgSrc = `../assets/players/${player.image}`;
   card.innerHTML = `
     <span class="profile-photo-watermark">${player.number}</span>
-    <img src="${imgSrc}" alt="${player.name}" class="profile-photo-img" loading="lazy">
+    <img src="${imgSrc}" alt="${player.name}" class="profile-photo-img" loading="lazy"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
     <i class="ti ti-user-circle"></i>
     <div class="profile-photo-label">
       <strong>Player Image Coming Soon</strong>
@@ -73,7 +78,7 @@ function buildCharacter(player) {
     <h2>Character Profile</h2>
     <div class="character-grid">
       <div class="coach-quote">
-        “Coach notes and character profile details for ${player.name} will be added here.”
+        "Coach notes and character profile details for ${player.name} will be added here."
         <span>Primetime coach profile</span>
       </div>
       <ul class="character-list">
@@ -95,12 +100,44 @@ function buildAllTimeStats(player) {
   const tbody = document.createElement('tbody');
 
   thead.innerHTML = `<tr>${ALL_TIME_FIELDS.map(field => `<th>${field}</th>`).join('')}</tr>`;
-  tbody.innerHTML = `<tr>${ALL_TIME_FIELDS.map(field => `<td>${stats[field] || '—'}</td>`).join('')}</tr>`;
+  tbody.innerHTML = `<tr>${ALL_TIME_FIELDS.map(field => `<td>${stats[field] ?? '—'}</td>`).join('')}</tr>`;
   table.append(thead, tbody);
 
   const wrap = profileEl('div', 'stats-table-wrap');
   wrap.appendChild(table);
-  inner.innerHTML = `<div class="profile-section-label">Performance</div><h2>All-Time Stats</h2>`;
+  inner.innerHTML = `<div class="profile-section-label">Performance</div><h2>All-Time Batting Stats</h2>`;
+  inner.appendChild(wrap);
+  block.appendChild(inner);
+  return block;
+}
+
+function buildPitchingStats(player) {
+  const p = player.pitching;
+  const block = profileEl('section', 'profile-block pitching-block');
+  const inner = profileEl('div', 'profile-block-inner');
+
+  const snapGrid = profileEl('div', 'pitching-snap-grid');
+  PITCHING_SNAP_FIELDS.forEach(field => {
+    const tile = profileEl('div', 'pitching-snap-tile');
+    const label = field === 'W' ? 'W-L' : field;
+    const val = field === 'W' ? `${p.W}-${p.L}` : (p[field] ?? '—');
+    tile.innerHTML = `<strong>${val}</strong><span>${label}</span>`;
+    snapGrid.appendChild(tile);
+  });
+
+  const table = profileEl('table', 'stats-table');
+  const thead = document.createElement('thead');
+  const tbody = document.createElement('tbody');
+  thead.innerHTML = `<tr>${PITCHING_ALL_FIELDS.map(f => `<th>${f}</th>`).join('')}</tr>`;
+  tbody.innerHTML = `<tr>${PITCHING_ALL_FIELDS.map(f => `<td>${p[f] ?? '—'}</td>`).join('')}</tr>`;
+  table.append(thead, tbody);
+
+  const wrap = profileEl('div', 'stats-table-wrap');
+  wrap.appendChild(table);
+
+  inner.innerHTML = `<div class="profile-section-label">On The Mound</div><h2>Pitching Stats</h2>
+    <p class="pitching-note">Primetime Fastpitch 10U · Spring/Summer 2026 — ${p.IP} IP across ${p.GP} appearances.</p>`;
+  inner.appendChild(snapGrid);
   inner.appendChild(wrap);
   block.appendChild(inner);
   return block;
@@ -170,7 +207,9 @@ async function renderPlayerProfile() {
   const main = profileEl('main', 'profile-main');
   const top = profileEl('div', 'profile-top-grid');
   top.append(buildPhotoCard(player), buildSnapshotPanel(player));
-  main.append(top, buildCharacter(player), buildAllTimeStats(player), buildFilmRoom(player));
+  main.append(top, buildCharacter(player), buildAllTimeStats(player));
+  if (player.pitching) main.appendChild(buildPitchingStats(player));
+  main.append(buildFilmRoom(player));
 
   const back = profileEl('a', 'back-roster', '← Back to Roster');
   back.href = '../index.html#roster';
