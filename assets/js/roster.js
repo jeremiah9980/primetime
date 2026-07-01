@@ -63,6 +63,14 @@ async function loadRoster() {
     root.replaceChildren(...players.map(buildPlayerCard));
     window.dispatchEvent(new CustomEvent('primetime-roster-rendered'));
   } catch (err) {
+    // The roster HTML ships with the full set of statically pre-rendered
+    // player cards. If the live data fetch fails (offline, file://, wrong
+    // path, etc.) keep those static cards in place instead of wiping the
+    // roster — the page should always show player cards.
+    if (root.querySelector('.player-card')) {
+      window.dispatchEvent(new CustomEvent('primetime-roster-rendered'));
+      return;
+    }
     root.innerHTML = `<div class="doc-item">
       <div class="doc-icon"><i class="ti ti-alert-circle"></i></div>
       <div class="doc-info">
