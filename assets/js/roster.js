@@ -48,21 +48,51 @@ function buildPlayerCard(player) {
     </div>`;
 
   const img = card.querySelector('img.player-photo-img');
-  img.addEventListener('load', () => img.closest('.player-photo').classList.add('has-player-image'));
-  img.addEventListener('error', () => img.remove());
+  attachImageFallback(img);
   return card;
+}
+
+// Wire a single player-photo <img> so a broken/missing photo hides the img and
+// reveals the "coming soon" placeholder, while a successful load flags the
+// wrapper with `has-player-image`. Works for both static and dynamic cards.
+function attachImageFallback(img) {
+  if (!img) return;
+  if (img.complete && img.naturalWidth === 0) {
+    img.remove();
+    return;
+  }
+  img.addEventListener('load', () => {
+    const wrap = img.closest('.player-photo');
+    if (wrap) wrap.classList.add('has-player-image');
+  }, { once: true });
+  img.addEventListener('error', () => img.remove(), { once: true });
 }
 
 async function loadRoster() {
   const root = document.querySelector('[data-roster-grid]');
   if (!root) return;
+
+  // Static-first: if the page shipped pre-rendered cards, wire their images now
+  // so photos fall back gracefully even if the JSON fetch never resolves.
+  const hasStatic = !!root.querySelector('.player-card');
+  if (hasStatic) {
+    root.querySelectorAll('.player-card img.player-photo-img').forEach(attachImageFallback);
+  }
+
   try {
     const response = await fetch(`${ROSTER_DATA_PATH}?v=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const players = await response.json();
+    // JSON stays authoritative when it loads cleanly, so future JSON edits show.
+    if (!Array.isArray(players) || players.length === 0) {
+      throw new Error('Empty or invalid roster data');
+    }
     root.replaceChildren(...players.map(buildPlayerCard));
     window.dispatchEvent(new CustomEvent('primetime-roster-rendered'));
   } catch (err) {
+    // On any failure, keep static cards if present; only show the error tile
+    // when there was nothing pre-rendered to fall back to.
+    if (hasStatic) return;
     root.innerHTML = `<div class="doc-item">
       <div class="doc-icon"><i class="ti ti-alert-circle"></i></div>
       <div class="doc-info">
