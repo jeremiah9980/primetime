@@ -48,14 +48,24 @@ function buildPlayerCard(player) {
     </div>`;
 
   const img = card.querySelector('img.player-photo-img');
+  attachImageFallback(img);
+  return card;
+}
+
+function attachImageFallback(img) {
   img.addEventListener('load', () => img.closest('.player-photo').classList.add('has-player-image'));
   img.addEventListener('error', () => img.remove());
-  return card;
 }
 
 async function loadRoster() {
   const root = document.querySelector('[data-roster-grid]');
   if (!root) return;
+  // Static-first: if cards are already pre-rendered into the grid, leave them
+  // untouched and only wire up broken-image handling for their existing imgs.
+  if (root.querySelector('.player-card')) {
+    root.querySelectorAll('.player-card img.player-photo-img').forEach(attachImageFallback);
+    return;
+  }
   try {
     const response = await fetch(`${ROSTER_DATA_PATH}?v=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
