@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Primetime Gold · Pink Out Temple</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: scoreboard band up top (our two games), then division board, then team/event reference. Gold + dugout charcoal, pink for the Pink Out theme. */
+:root{
+  --bg:#f6f4ee; --panel:#ffffff; --ink:#1d1b16; --muted:#6b665a; --line:#e2ddcf;
+  --gold:#c9971c; --gold-ink:#7a5a06; --board:#1f1d19; --board-ink:#f7e7b4; --pink:#d6457f;
+  --win:#2f7d4f; --loss:#b23b3b; --tie:#8a6d1f;
+  --display:"Saira Condensed","Arial Narrow",sans-serif;
+  --body:"Public Sans",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14130f; --panel:#1d1b16; --ink:#efe9da; --muted:#a39c8a; --line:#322e25;
+  --gold:#e3b33a; --gold-ink:#f0cb6a; --board:#0c0b09; --board-ink:#f7e7b4; --pink:#f06aa0;
+  --win:#5cc189; --loss:#ee7a7a; --tie:#e0c060; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14130f; --panel:#1d1b16; --ink:#efe9da; --muted:#a39c8a; --line:#322e25;
+  --gold:#e3b33a; --gold-ink:#f0cb6a; --board:#0c0b09; --board-ink:#f7e7b4; --pink:#f06aa0;
+  --win:#5cc189; --loss:#ee7a7a; --tie:#e0c060; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+header{display:grid;gap:6px}
+.eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--pink);font-size:14px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,7vw,56px);line-height:.95;margin:0;text-wrap:balance;text-transform:uppercase}
+h1 span{color:var(--gold)}
+.meta{color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 16px}
+.meta b{color:var(--ink);font-weight:600}
+h2{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:22px;margin:0 0 10px}
+.sub{color:var(--muted);font-size:13px;margin:-6px 0 12px}
+
+/* scoreboard */
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.sb{background:var(--board);color:var(--board-ink);border-radius:10px;padding:14px 16px;display:grid;gap:10px;border-top:4px solid var(--gold)}
+.sb.live{border-top-color:var(--pink)}
+.sb-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:14px;opacity:.85}
+.pill{font-family:var(--display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px;padding:2px 8px;border-radius:99px;background:rgba(247,231,180,.14)}
+.pill.live{background:var(--pink);color:#fff}
+.pill.final{background:var(--gold);color:#1f1d19}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.team{font-family:var(--display);font-weight:700;font-size:22px;text-transform:uppercase;min-width:0}
+.team.us{color:var(--gold)}
+.score{font-family:var(--mono);font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;min-width:2ch;text-align:right}
+.sb-foot{font-size:12.5px;opacity:.8;border-top:1px solid rgba(247,231,180,.15);padding-top:8px}
+
+.callout{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--pink);border-radius:8px;padding:12px 14px;font-size:14px}
+
+/* tables */
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--muted);font-weight:700}
+tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+tr.us td{background:color-mix(in srgb,var(--gold) 14%,transparent);font-weight:600}
+.w{color:var(--win);font-weight:600}.l{color:var(--loss)}.t{color:var(--tie)}
+.tbd{color:var(--muted)}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:8px;min-width:0}
+.card h3{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;margin:0;font-size:18px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:14px}
+dt{color:var(--muted)}dd{margin:0;min-width:0;overflow-wrap:anywhere}
+a{color:var(--gold-ink)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-weight:700;text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:6px 12px;border-radius:99px;font-size:14px}
+.links a:hover{border-color:var(--gold)}
+.small{font-size:12.5px;color:var(--muted)}
+</style>
+<style>*{box-sizing:border-box}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">NCS Fastpitch · 12U Open · Event 13481</div>
+    <h1><span>Primetime Gold</span> at Pink Out Temple</h1>
+    <div class="meta">
+      <span><b>Oct 17–18, 2026</b></span>
+      <span>Crossroads Park, Temple TX</span>
+      <span>4GG · 70-min pools → double elim</span>
+      <span id="asof"></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Our games</h2>
+    <p class="sub">Saturday pool play, both on Crossroads Park Field 3. Sunday bracket seeds from pool results.</p>
+    <div class="games" id="games"></div>
+  </section>
+
+  <div class="callout"><b>Guest player:</b> Kassidy Cargill (Texas Venom 12U) is on the NCS guest list for this event.</div>
+
+  <section>
+    <h2>Saturday records</h2>
+    <p class="sub">Win-loss from posted 12U Open scores. NCS hasn't labeled pool assignments, so this is division-wide, not official pool standings.</p>
+    <div class="tbl"><table id="recs"><thead><tr><th>Team</th><th class="n">W</th><th class="n">L</th><th class="n">T</th><th class="n">RS</th><th class="n">RA</th><th class="n">Diff</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section>
+    <h2>Full 12U Saturday schedule</h2>
+    <div class="tbl"><table id="sched"><thead><tr><th>#</th><th>Time</th><th>Field</th><th>Matchup</th><th class="n">Score</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section>
+    <h2>Sunday bracket</h2>
+    <div class="card"><p style="margin:0">Not posted yet. Double elimination, 75-minute games, must have a winner. NCS publishes seeding after pool play wraps Saturday afternoon.</p></div>
+  </section>
+
+  <section class="grid2">
+    <div class="card">
+      <h3>Primetime Gold</h3>
+      <dl>
+        <dt>Class</dt><dd>12U C · Georgetown TX</dd>
+        <dt>Head coach</dt><dd>Juan Lazo</dd>
+        <dt>Season</dt><dd>5-7-1 · 400 pts · avg finish 6.0</dd>
+        <dt>Runs</dt><dd>2.85 scored / 3.23 allowed per game</dd>
+        <dt>vs class</dt><dd>C 4-3-0 · B 0-4-1 · A 1-0-0</dd>
+        <dt>Streak</dt><dd>L2 coming in</dd>
+      </dl>
+      <p class="small" style="margin:0">Pre-event NCS numbers. Next up: Fall State Nov 7–8, Class C Regional Nov 14–15.</p>
+    </div>
+    <div class="card">
+      <h3>Scouting today's opponents</h3>
+      <dl>
+        <dt>Blaze 2033</dt><dd>12U B, Georgetown. Beat Buzz Bold 3-2 at 9:20. Primetime is 0-4-1 vs B teams this fall.</dd>
+        <dt>BarrelFactory 12U</dt><dd>Plays Hotshots 2k14 Vega at noon (Vega already 1-0, beat CLUTCH 7-3).</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <h3>At the park</h3>
+      <dl>
+        <dt>Address</dt><dd>1020 Research Pkwy, Temple TX 76502</dd>
+        <dt>Gate</dt><dd>Cash only · $15 day / $20 weekend · 12 &amp; under free</dd>
+        <dt>Director</dt><dd>Maggie Stoecklein · 512-997-8125</dd>
+        <dt>Email</dt><dd>maggiestournaments@gmail.com</dd>
+      </dl>
+      <p class="small" style="margin:0">NCS's directions link points to 6600 Research Lp, which doesn't match the listed address. Use 1020 Research Pkwy.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live on NCS</h2>
+    <div class="links">
+      <a href="https://playncs.com/fastpitch/Events/Schedule/13481/pink-out-70-min-pools-4gg?division=12U%20OPEN" target="_blank" rel="noopener">Schedule &amp; scores</a>
+      <a href="https://playncs.com/fastpitch/Events/Standings/13481/pink-out-70-min-pools-4gg?division=12U%20OPEN" target="_blank" rel="noopener">Standings</a>
+      <a href="https://playncs.com/fastpitch/Events/Bracket/13481/pink-out-70-min-pools-4gg?division=12U%20OPEN" target="_blank" rel="noopener">Bracket</a>
+      <a href="https://playncs.com/fastpitch/Teams/Details/88268/primetime-gold" target="_blank" rel="noopener">Team page</a>
+      <a href="https://playncs.com/fastpitch/Events/Details/13481/pink-out-70-min-pools-4gg" target="_blank" rel="noopener">Event info</a>
+    </div>
+  </section>
+</div>
+
+<script>
+const AS_OF = "Sat Oct 17 · 12:10 PM CT";
+const US = "Primetime Gold";
+// [game, time, field, team1, score1, team2, score2]  (null = not played/posted)
+const G = [
+ [1,"8:00 AM",2,"Texas Bombers CTX-Salado-Mickey",5,"TXBombers - Shoemaker",4],
+ [2,"8:00 AM",4,"CLUTCH 2033",5,"CenTex Bandits",3],
+ [3,"9:20 AM",1,"Cen-Tex Misfits",8,"Centex All Stars",9],
+ [4,"9:20 AM",2,"Pure Prospects 2k15",3,"Texas Bombers CTX-Salado-Mickey",10],
+ [5,"9:20 AM",3,"Buzz Bold",2,"Blaze 2033",3],
+ [6,"9:20 AM",4,"Hotshots 2k14 Vega",7,"CLUTCH 2033",3],
+ [7,"10:40 AM",1,"Texas Twelve Capital City 11u Maroon",12,"Cen-Tex Misfits",2],
+ [8,"10:40 AM",2,"TXBombers - Shoemaker",1,"CenTex Wolfpack",3],
+ [9,"10:40 AM",3,"CenTex Bandits",4,"Buzz Bold",10],
+ [10,"10:40 AM",4,"Pure Prospects 2k15",null,"Buzz ATX Elite 2032",null],
+ [11,"12:00 PM",1,"Centex All Stars",null,"Waco Warriors 2k15",null],
+ [12,"12:00 PM",2,"BarrelFactory 12U",null,"Hotshots 2k14 Vega",null],
+ [13,"12:00 PM",3,"Blaze 2033",null,"Primetime Gold",null],
+ [14,"12:00 PM",4,"Hotshots Premier Villegas 2033",null,"Texas Twelve Capital City 11u Maroon",null],
+ [15,"1:20 PM",1,"Waco Warriors 2k15",null,"CenTex Wolfpack",null],
+ [16,"1:20 PM",3,"Primetime Gold",null,"BarrelFactory 12U",null],
+ [17,"1:20 PM",4,"Buzz ATX Elite 2032",null,"Hotshots Premier Villegas 2033",null]
+];
+const LIVE = new Set([13]); // in progress as of AS_OF
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.getElementById("asof").textContent = "Updated " + AS_OF;
+
+// scoreboards
+const gEl = document.getElementById("games");
+G.filter(g => g[3]===US || g[5]===US).forEach(g => {
+  const done = g[4]!==null, live = LIVE.has(g[0]);
+  const st = done ? '<span class="pill final">Final</span>' : live ? '<span class="pill live">In progress</span>' : '<span class="pill">Upcoming</span>';
+  let foot = "Pool game · 70 min, can end in a tie";
+  if (done){ const us = g[3]===US ? g[4]:g[6], them = g[3]===US ? g[6]:g[4];
+    foot = us>them ? "Primetime win" : us<them ? "Primetime loss" : "Tie"; foot += " · pool game"; }
+  gEl.insertAdjacentHTML("beforeend", `<div class="sb${live?' live':''}">
+    <div class="sb-top"><span>Game ${g[0]} · ${g[1]} · Field ${g[2]}</span>${st}</div>
+    <div class="row"><span class="team${g[3]===US?' us':''}">${esc(g[3])}</span><span class="score">${done?g[4]:"–"}</span></div>
+    <div class="row"><span class="team${g[5]===US?' us':''}">${esc(g[5])}</span><span class="score">${done?g[6]:"–"}</span></div>
+    <div class="sb-foot">${foot}</div></div>`);
+});
+
+// schedule
+const sEl = document.querySelector("#sched tbody");
+G.forEach(g => {
+  const us = g[3]===US || g[5]===US, done = g[4]!==null;
+  const fmt = (t,s,o) => `<span class="${done ? (s>o?'w':s<o?'l':'t') : ''}">${esc(t)}</span>`;
+  sEl.insertAdjacentHTML("beforeend", `<tr class="${us?'us':''}"><td class="n">${g[0]}</td><td>${g[1]}</td><td>Field ${g[2]}</td>
+    <td>${fmt(g[3],g[4],g[6])} vs ${fmt(g[5],g[6],g[4])}</td>
+    <td class="n">${done ? g[4]+"–"+g[6] : (LIVE.has(g[0]) ? '<span class="tbd">live</span>' : '<span class="tbd">'+g[1]+'</span>')}</td></tr>`);
+});
+
+// records
+const R = {};
+const add = t => R[t] ??= {w:0,l:0,t:0,rs:0,ra:0};
+G.forEach(g => { add(g[3]); add(g[5]); if (g[4]===null) return;
+  const a=R[g[3]], b=R[g[5]]; a.rs+=g[4]; a.ra+=g[6]; b.rs+=g[6]; b.ra+=g[4];
+  if (g[4]>g[6]){a.w++;b.l++} else if (g[4]<g[6]){b.w++;a.l++} else {a.t++;b.t++} });
+const rEl = document.querySelector("#recs tbody");
+Object.entries(R).sort((x,y)=> (y[1].w-y[1].l)-(x[1].w-x[1].l) || (y[1].rs-y[1].ra)-(x[1].rs-x[1].ra) || x[0].localeCompare(y[0]))
+ .forEach(([t,r]) => { const d=r.rs-r.ra;
+  rEl.insertAdjacentHTML("beforeend", `<tr class="${t===US?'us':''}"><td>${esc(t)}</td><td class="n">${r.w}</td><td class="n">${r.l}</td><td class="n">${r.t}</td><td class="n">${r.rs}</td><td class="n">${r.ra}</td><td class="n">${d>0?'+':''}${d}</td></tr>`); });
+</script>
+</body>
+</html>
