@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Primetime 10U · NCS State Command</title>
+<title>Primetime Gold 12U · NCS Pink Out</title>
 <meta name="theme-color" content="#0c0f16" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -225,10 +225,10 @@
     <div class="top-row">
       <div class="crest" id="crest">PT</div>
       <div class="ttl">
-        <h1 id="evtName">NCS 10U STATE</h1>
+        <h1 id="evtName">NCS PINK OUT 12U</h1>
         <div class="sub">
-          <span id="evtDates">Jun 13–14</span><span class="dot"></span>
-          <span id="evtLoc">Taylor, TX</span><span class="dot"></span>
+          <span id="evtDates">Oct 17–18</span><span class="dot"></span>
+          <span id="evtLoc">Temple, TX</span><span class="dot"></span>
           <span class="clock" id="clock">--:--</span>
         </div>
       </div>
@@ -263,82 +263,98 @@
 
 <script>
 /* =====================================================================
-   PRIMETIME 10U · NCS STATE COMMAND
+   PRIMETIME GOLD 12U · NCS PINK OUT (TEMPLE)
    Single-file dashboard. Renders from embedded SEED data, and (once
    deployed) auto-loads ./data/schedule.json written by the GitHub Action.
    ===================================================================== */
 
 const CONFIG = {
-  myTeamId: "71355",                 // Primetime 10u  (change to re-default)
-  teamAbbrev: "PT",
-  ncsScheduleUrl: "https://playncs.com/FASTPITCH/Events/Schedule/12472/2026-central-texas-ncs-10u-summer-state-triple-points-open-6gg?division=10U%20OPEN",
-  ncsBracketUrl:  "https://playncs.com/FASTPITCH/Events/Bracket/12472/2026-central-texas-ncs-10u-summer-state-triple-points-open-6gg?division=10U%20OPEN",
-  ncsStandingsUrl:"https://playncs.com/FASTPITCH/Events/Standings/12472/2026-central-texas-ncs-10u-summer-state-triple-points-open-6gg?division=10U%20OPEN",
-  mapsUrl: "https://maps.google.com/?q=Taylor+Athletic+Complex+Taylor+TX",
+  myTeamId: "88268",                 // Primetime Gold  (change to re-default)
+  teamAbbrev: "PG",
+  ncsScheduleUrl: "https://playncs.com/fastpitch/Events/Schedule/13481/pink-out-70-min-pools-4gg?division=12U%20OPEN",
+  ncsBracketUrl:  "https://playncs.com/fastpitch/Events/Bracket/13481/pink-out-70-min-pools-4gg?division=12U%20OPEN",
+  ncsStandingsUrl:"https://playncs.com/fastpitch/Events/Standings/13481/pink-out-70-min-pools-4gg?division=12U%20OPEN",
+  mapsUrl: "https://maps.google.com/?q=Crossroads+Park+1020+Research+Pkwy+Temple+TX+76502",
   refreshMs: 120000,                 // re-pull data/schedule.json every 2 min
-  gameLenMin: 75                     // assumed game length for LIVE detection
+  gameLenMin: 70                     // pool games are 70 min (bracket 75)
 };
 
-/* ---- Embedded seed (real pulled NCS data, Sat Jun 13 2026) ---- */
+/* ---- Embedded seed (real pulled NCS data, Event 13481 · Sat pool finals + Silver bracket, Sun Oct 18 ~11:15 AM · G3 L, G6 W (scores not posted) — Primetime in G8) ---- */
 const SEED = {
   event:{
-    name:"NCS 10U STATE", dates:"Jun 13–14, 2026", location:"Taylor, TX",
-    venue:"Taylor Athletic Complex", director:"Maggie Stoecklein",
+    name:"NCS PINK OUT 12U", dates:"Oct 17–18, 2026", location:"Temple, TX",
+    venue:"Crossroads Park", director:"Maggie Stoecklein",
     gateFees:"Weekend $20 · Daily $15 · 12U Free (cash only)",
-    division:"10U OPEN", url:CONFIG.ncsScheduleUrl
+    division:"12U OPEN", url:CONFIG.ncsScheduleUrl
   },
-  updated:null,
+  updated:"2026-10-18T16:15:00Z",
   teams:[
-    {id:"70200", name:"Texas Blaze CTX 10U"},
-    {id:"71028", name:"Texas Blaze Alcozer 10U", guest:true},
-    {id:"72338", name:"Power House Andrade 10U"},
-    {id:"71631", name:"CTX Mayhem -Aviles", guest:true},
-    {id:"72242", name:"Clubhouse Stix 10u Malik"},
-    {id:"71355", name:"Primetime 10u"},
-    {id:"75786", name:"10U BAMBINAS"},
-    {id:"86649", name:"Sting Softball 10u"},
-    {id:"73637", name:"10U Texas Blaze Waco"},
-    {id:"73551", name:"Bombers CTX 10U-Singletary"},
-    {id:"81426", name:"RobCo Rowdies"},
-    {id:"75431", name:"Corona Angels 10U Coleman"}
+    {id:"89152", name:"Texas BombersCTX-Salado-Mickey"},
+    {id:"95146", name:"TXBombers - Shoemaker"},
+    {id:"89771", name:"CLUTCH 2033"},
+    {id:"91350", name:"CenTex Bandits"},
+    {id:"92816", name:"Cen-Tex Misfits"},
+    {id:"94885", name:"Centex All Stars"},
+    {id:"88540", name:"Pure Prospects 2k15"},
+    {id:"89739", name:"Buzz Bold"},
+    {id:"90543", name:"Blaze 2033"},
+    {id:"88705", name:"Hotshots 2k14 Vega"},
+    {id:"89844", name:"Texas Twelve Capital City 11u Maroon"},
+    {id:"88176", name:"CenTex Wolfpack"},
+    {id:"89155", name:"Buzz ATX Elite 2032"},
+    {id:"87134", name:"Waco Warriors 2k15"},
+    {id:"91405", name:"BarrelFactory 12U"},
+    {id:"88268", name:"Primetime Gold"},
+    {id:"91357", name:"Hotshots Premier Villegas 2033"}
   ],
   games:[
-    g(1,"Sat","2026-06-13T09:00:00","9:00 AM","TAC 1","70200","71028"),
-    g(2,"Sat","2026-06-13T09:00:00","9:00 AM","TAC 2","72338","71631"),
-    g(3,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 1","70200","72242"),
-    g(4,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 2","71355","71631"),
-    g(5,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 3","75786","86649"),
-    g(6,"Sat","2026-06-13T10:20:00","10:20 AM","TAC 5","73637","73551"),
-    g(7,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 1","72242","75431"),
-    g(8,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 2","81426","71355"),
-    g(9,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 3","71028","86649"),
-    g(10,"Sat","2026-06-13T11:40:00","11:40 AM","TAC 5","73637","72338"),
-    g(11,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 1","70200","75786"),
-    g(12,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 2","73551","71631"),
-    g(13,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 3","71028","75431"),
-    g(14,"Sat","2026-06-13T13:00:00","1:00 PM","TAC 5","81426","72338"),
-    g(15,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 1","72242","75786"),
-    g(16,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 2","73551","71355"),
-    g(17,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 3","70200","86649"),
-    g(18,"Sat","2026-06-13T14:20:00","2:20 PM","TAC 5","73637","71631"),
-    g(19,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 1","72242","71028"),
-    g(20,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 2","71355","72338"),
-    g(21,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 3","86649","75431"),
-    g(22,"Sat","2026-06-13T15:40:00","3:40 PM","TAC 5","81426","73637"),
-    g(23,"Sat","2026-06-13T17:00:00","5:00 PM","TAC 3","75786","75431"),
-    g(24,"Sat","2026-06-13T17:00:00","5:00 PM","TAC 5","81426","73551")
+    g(1,"Sat","2026-10-17T08:00:00","8:00 AM","CP 2","89152","95146",5,4),
+    g(2,"Sat","2026-10-17T08:00:00","8:00 AM","CP 4","89771","91350",5,3),
+    g(3,"Sat","2026-10-17T09:20:00","9:20 AM","CP 1","92816","94885",8,9),
+    g(4,"Sat","2026-10-17T09:20:00","9:20 AM","CP 2","88540","89152",3,10),
+    g(5,"Sat","2026-10-17T09:20:00","9:20 AM","CP 3","89739","90543",2,3),
+    g(6,"Sat","2026-10-17T09:20:00","9:20 AM","CP 4","88705","89771",7,3),
+    g(7,"Sat","2026-10-17T10:40:00","10:40 AM","CP 1","89844","92816",12,2),
+    g(8,"Sat","2026-10-17T10:40:00","10:40 AM","CP 2","95146","88176",1,3),
+    g(9,"Sat","2026-10-17T10:40:00","10:40 AM","CP 3","91350","89739",4,10),
+    g(10,"Sat","2026-10-17T10:40:00","10:40 AM","CP 4","88540","89155",2,6),
+    g(11,"Sat","2026-10-17T12:00:00","12:00 PM","CP 1","94885","87134",0,7),
+    g(12,"Sat","2026-10-17T12:00:00","12:00 PM","CP 2","91405","88705",2,6),
+    g(13,"Sat","2026-10-17T12:00:00","12:00 PM","CP 3","90543","88268",6,0),
+    g(14,"Sat","2026-10-17T12:00:00","12:00 PM","CP 4","91357","89844",6,3),
+    g(15,"Sat","2026-10-17T13:20:00","1:20 PM","CP 1","87134","88176",0,16),
+    g(16,"Sat","2026-10-17T13:20:00","1:20 PM","CP 3","88268","91405",1,11),
+    g(17,"Sat","2026-10-17T13:20:00","1:20 PM","CP 4","89155","91357",4,1),
+    /* Silver bracket (double elim, 75 min, must have a winner) — shown on the Bracket tab */
+    b(1,"2026-10-17T15:00:00","3:00 PM","CP 1","91350","88540",9,4),
+    b(2,"2026-10-17T16:30:00","4:30 PM","CP 1","87134","92816",14,2),
+    b(3,"2026-10-18T08:00:00","8:00 AM","CP 1","95146","88268",null,null),
+    b(4,"2026-10-18T08:00:00","8:00 AM","CP 2","94885","91350",null,null),
+    b(5,"2026-10-18T09:30:00","9:30 AM","CP 1","87134","95146",null,null),
+    b(6,"2026-10-18T09:30:00","9:30 AM","CP 2","92816","88268",null,null),
+    b(7,"2026-10-18T11:00:00","11:00 AM","CP 1","L5","88540",null,null),
+    b(8,"2026-10-18T11:00:00","11:00 AM","CP 2","L4","88268",null,null),
+    b(9,"2026-10-18T12:30:00","12:30 PM","CP 2","W4","W5",null,null),
+    b(10,"2026-10-18T12:30:00","12:30 PM","CP 1","W7","W8",null,null),
+    b(11,"2026-10-18T14:00:00","2:00 PM","CP 1","L9","W10",null,null),
+    b(12,"2026-10-18T15:30:00","3:30 PM","CP 1","W9","W11",null,null)
   ]
 };
-function g(no,day,iso,time,field,homeId,awayId){
+function b(no,iso,time,field,homeId,awayId,hs=null,as=null){
+  return {...g(no,"Sun",iso,time,field,homeId,awayId,hs,as), id:100+no, bracket:true};
+}
+function g(no,day,iso,time,field,homeId,awayId,hs=null,as=null){
   return {id:no, gameNo:no, day, dateISO:iso, time, field,
-          homeId, awayId, homeScore:null, awayScore:null, status:"scheduled"};
+          homeId, awayId, homeScore:hs, awayScore:as,
+          status:(hs!=null&&as!=null)?"final":"scheduled"};
 }
 
 /* ---------------- State ---------------- */
 let DATA = JSON.parse(JSON.stringify(SEED));
 let state = { view:"team", teamId:CONFIG.myTeamId, theme:"dark", editing:null };
 const $ = s => document.querySelector(s);
-const nameById = id => (DATA.teams.find(t=>t.id===id)||{}).name || "TBD";
+const nameById = id => (DATA.teams.find(t=>t.id===id)||{}).name ||
+  (/^[WL]\d+$/.test(id||"") ? (id[0]==="W"?"Winner G":"Loser G")+id.slice(1) : "TBD");
 const cleanName = n => (n||"").replace(/\*+$/,"").trim();
 
 /* ---------------- Helpers ---------------- */
@@ -361,6 +377,7 @@ function resultFor(id,gm){
 function record(id){
   let w=0,l=0,t=0,rs=0,ra=0,gp=0;
   teamGames(id).forEach(gm=>{
+    if(gm.bracket) return;
     const res=resultFor(id,gm); if(!res) return;
     gp++; rs+=res.mine; ra+=res.opp;
     if(res.r==="W")w++; else if(res.r==="L")l++; else t++;
@@ -477,7 +494,7 @@ function gameCard(gm, opts={}){
     <div class="g-when">
       <div class="t">${gm.time.replace(/:00/,"").replace(" ","")}</div>
       <div class="g">G${gm.gameNo}</div>
-      <div class="f">${gm.field.replace("TAC","Fld")}</div>
+      <div class="f">${gm.field.replace("CP","Fld")}</div>
     </div>
     <div class="g-teams">
       ${teamRow(gm.homeId,gm.homeScore,hWin)}
@@ -561,7 +578,7 @@ function render(){
   else if(state.view==="stand") c.innerHTML=viewStandings();
   else if(state.view==="sun") c.innerHTML=viewDay("Sun");
   const up = DATA.updated ? new Date(DATA.updated).toLocaleString([], {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}) : "seed schedule (not yet live)";
-  $("#srcNote").innerHTML = `Source: NCS Event 12472 · 10U OPEN · Last updated: <b>${up}</b><br>Live results auto-load from <code>data/schedule.json</code> once deployed with the scraper Action.`;
+  $("#srcNote").innerHTML = `Source: NCS Event 13481 · 12U OPEN · Kassidy Cargill guesting (Texas Venom) · Last updated: <b>${up}</b><br>Live results auto-load from <code>data/schedule.json</code> once deployed with the scraper Action.`;
 }
 
 /* ---------------- Interactions ---------------- */
